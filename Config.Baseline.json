@@ -1,0 +1,1257 @@
+{
+  "system_name": "Exchange",
+  "system_type_category": "powershell",
+  "system_type_name": "Microsoft Exchange",
+  "name_values": [
+    {
+      "name": "authentication",
+      "value": null
+    },
+    {
+      "name": "collections",
+      "value": [
+        "CASMailboxes",
+        "MailboxDatabases",
+        "Mailboxes",
+        "MailboxStatistics",
+        "RemoteMailboxes"
+      ]
+    },
+    {
+      "name": "domain_controller",
+      "value": ""
+    },
+    {
+      "name": "nr_of_sessions",
+      "value": null
+    },
+    {
+      "name": "organizational_unit",
+      "value": "*"
+    },
+    {
+      "name": "password",
+      "value": null
+    },
+    {
+      "name": "proxy_access_type",
+      "value": null
+    },
+    {
+      "name": "server",
+      "value": null
+    },
+    {
+      "name": "sessions_idle_timeout",
+      "value": null
+    },
+    {
+      "name": "skip_certificate_checks",
+      "value": null
+    },
+    {
+      "name": "use_proxy_server",
+      "value": null
+    },
+    {
+      "name": "use_secure_connection",
+      "value": null
+    },
+    {
+      "name": "use_svc_account_creds",
+      "value": null
+    },
+    {
+      "name": "username",
+      "value": null
+    }
+  ],
+  "collections": [
+    {
+      "col_name": "CASMailboxes",
+      "fields": [
+        {
+          "field_name": "Guid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ActiveSyncEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ECPEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Id",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Identity",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ImapEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsValid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "LinkedMasterAccount",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "OWAEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "PopEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "PrimarySmtpAddress",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DisplayName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DistinguishedName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        }
+      ],
+      "key": "Guid",
+      "display": "Identity",
+      "name_values": [
+        {
+          "name": "properties",
+          "value": [
+            "ActiveSyncEnabled",
+            "DisplayName",
+            "DistinguishedName",
+            "ECPEnabled",
+            "Guid",
+            "Id",
+            "Identity",
+            "ImapEnabled",
+            "IsValid",
+            "LinkedMasterAccount",
+            "OWAEnabled",
+            "PopEnabled",
+            "PrimarySmtpAddress"
+          ]
+        }
+      ],
+      "sys_nn": [],
+      "source": "data"
+    },
+    {
+      "col_name": "MailboxDatabases",
+      "fields": [
+        {
+          "field_name": "Identity",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DatabaseSize",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Description",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExchangeVersion",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Id",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsMailboxDatabase",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsPublicFolderDatabase",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IssueWarningQuota",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsSuspendedFromProvisioning",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsValid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "OriginatingServer",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        }
+      ],
+      "key": "Id",
+      "display": "Identity",
+      "name_values": [],
+      "sys_nn": [],
+      "source": "data"
+    },
+    {
+      "col_name": "Mailboxes",
+      "fields": [
+        {
+          "field_name": "Guid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": [
+            "CASMailboxes"
+          ]
+        },
+        {
+          "field_name": "Alias",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ArchiveName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Database",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DisplayName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "EmailAddresses",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Id",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "PrimarySmtpAddress",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "AccountDisabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute1",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute2",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute3",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute4",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute5",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute6",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute7",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute8",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute9",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute10",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute11",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute12",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute13",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute14",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute15",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute1",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute2",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute3",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute4",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute5",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "HiddenFromAddressListsEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsDirSynced",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsInactiveMailbox",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsMailboxEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsShared",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsValid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "LitigationHoldEnabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        }
+      ],
+      "key": "Guid",
+      "display": "Alias",
+      "name_values": [
+        {
+          "name": "properties",
+          "value": [
+            "AccountDisabled",
+            "Alias",
+            "ArchiveName",
+            "CustomAttribute1",
+            "CustomAttribute2",
+            "CustomAttribute3",
+            "CustomAttribute4",
+            "CustomAttribute5",
+            "CustomAttribute6",
+            "CustomAttribute7",
+            "CustomAttribute8",
+            "CustomAttribute9",
+            "CustomAttribute10",
+            "CustomAttribute11",
+            "CustomAttribute12",
+            "CustomAttribute13",
+            "CustomAttribute14",
+            "CustomAttribute15",
+            "Database",
+            "DisplayName",
+            "EmailAddresses",
+            "ExtensionCustomAttribute1",
+            "ExtensionCustomAttribute2",
+            "ExtensionCustomAttribute3",
+            "ExtensionCustomAttribute4",
+            "ExtensionCustomAttribute5",
+            "Guid",
+            "HiddenFromAddressListsEnabled",
+            "Id",
+            "IsDirSynced",
+            "IsInactiveMailbox",
+            "IsMailboxEnabled",
+            "IsShared",
+            "IsValid",
+            "LitigationHoldEnabled",
+            "PrimarySmtpAddress"
+          ]
+        }
+      ],
+      "sys_nn": [],
+      "source": "data"
+    },
+    {
+      "col_name": "MailboxStatistics",
+      "fields": [
+        {
+          "field_name": "Identity",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DatabaseName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DisconnectDate",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DisconnectReason",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DisplayName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsArchiveMailbox",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsQuarantined",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "LastLoggedOnUserAccount",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "LastLogonTime",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "LegacyDN",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "MailboxGuid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "TotalItemSize",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "TotalDeletedItemSize",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        }
+      ],
+      "key": "Identity",
+      "display": "DisplayName",
+      "name_values": [
+        {
+          "name": "properties",
+          "value": [
+            "DatabaseName",
+            "DisconnectDate",
+            "DisconnectReason",
+            "DisplayName",
+            "Identity",
+            "IsArchiveMailbox",
+            "IsQuarantined",
+            "LastLoggedOnUserAccount",
+            "LastLogonTime",
+            "LegacyDN",
+            "MailboxGuid",
+            "TotalDeletedItemSize",
+            "TotalItemSize"
+          ]
+        }
+      ],
+      "sys_nn": [],
+      "source": "data"
+    },
+    {
+      "col_name": "RemoteMailboxes",
+      "fields": [
+        {
+          "field_name": "Guid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Alias",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ArchiveName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DistinguishedName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Id",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "Name",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "PrimarySmtpAddress",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "RemoteRoutingAddress",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "AccountDisabled",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute1",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute2",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute3",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute4",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute5",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute6",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute7",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute8",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute9",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute10",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute11",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute12",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute13",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute14",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "CustomAttribute15",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "DisplayName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute1",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute2",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute3",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute4",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "ExtensionCustomAttribute5",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "IsValid",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "MaxReceiveSize",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "MaxSendSize",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "RecipientType",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "SamAccountName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "UserPrincipalName",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "WhenChanged",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "WhenCreated",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        },
+        {
+          "field_name": "WhenSoftDeleted",
+          "field_type": "string",
+          "include": true,
+          "field_format": "",
+          "field_source": "data",
+          "javascript": "",
+          "ref_col": []
+        }
+      ],
+      "key": "Guid",
+      "display": "DistinguishedName",
+      "name_values": [
+        {
+          "name": "properties",
+          "value": [
+            "AccountDisabled",
+            "Alias",
+            "ArchiveName",
+            "CustomAttribute1",
+            "CustomAttribute2",
+            "CustomAttribute3",
+            "CustomAttribute4",
+            "CustomAttribute5",
+            "CustomAttribute6",
+            "CustomAttribute7",
+            "CustomAttribute8",
+            "CustomAttribute9",
+            "CustomAttribute10",
+            "CustomAttribute11",
+            "CustomAttribute12",
+            "CustomAttribute13",
+            "CustomAttribute14",
+            "CustomAttribute15",
+            "DisplayName",
+            "DistinguishedName",
+            "ExtensionCustomAttribute1",
+            "ExtensionCustomAttribute2",
+            "ExtensionCustomAttribute3",
+            "ExtensionCustomAttribute4",
+            "ExtensionCustomAttribute5",
+            "Guid",
+            "Id",
+            "IsValid",
+            "MaxReceiveSize",
+            "MaxSendSize",
+            "Name",
+            "PrimarySmtpAddress",
+            "RecipientType",
+            "RemoteRoutingAddress",
+            "SamAccountName",
+            "UserPrincipalName",
+            "WhenChanged",
+            "WhenCreated",
+            "WhenSoftDeleted"
+          ]
+        }
+      ],
+      "sys_nn": [],
+      "source": "data"
+    }
+  ],
+  "auth": true
+}
