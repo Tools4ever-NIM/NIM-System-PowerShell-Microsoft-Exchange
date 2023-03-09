@@ -201,665 +201,664 @@ function Idm-OnUnload {
 
 $Properties = @{
     CASMailbox = @(
-        @{ name = 'ActiveSyncAllowedDeviceIDs';                          set = $true;                  }
-        @{ name = 'ActiveSyncBlockedDeviceIDs';                          set = $true;                  }
-        @{ name = 'ActiveSyncDebugLogging';                              set = $true;                  }
-        @{ name = 'ActiveSyncEnabled';                                   default = $true; set = $true; }
-        @{ name = 'ActiveSyncMailboxPolicy';                             set = $true;                  }
-        @{ name = 'ActiveSyncMailboxPolicyIsDefaulted';                                                }
-        @{ name = 'ActiveSyncSuppressReadReceipt';                       set = $true;                  }
-        @{ name = 'DisplayName';                                         set = $true;                  }
-        @{ name = 'DistinguishedName';                                                                 }
-        @{ name = 'ECPEnabled';                                          default = $true; set = $true; }
-        @{ name = 'EmailAddresses';                                      set = $true;                  }
-        @{ name = 'EwsAllowEntourage';                                   set = $true;                  }
-        @{ name = 'EwsAllowList';                                        set = $true;                  }
-        @{ name = 'EwsAllowMacOutlook';                                  set = $true;                  }
-        @{ name = 'EwsAllowOutlook';                                     set = $true;                  }
-        @{ name = 'EwsApplicationAccessPolicy';                          set = $true;                  }
-        @{ name = 'EwsBlockList';                                        set = $true;                  }
-        @{ name = 'EwsEnabled';                                          set = $true;                  }
-        @{ name = 'ExchangeVersion';                                                                   }
-        @{ name = 'ExternalImapSettings';                                                              }
-        @{ name = 'ExternalPopSettings';                                                               }
-        @{ name = 'ExternalSmtpSettings';                                                              }
-        @{ name = 'Guid';                                                default = $true; key = $true; }
-        @{ name = 'HasActiveSyncDevicePartnership';                      set = $true;                  }
-        @{ name = 'Id';                                                  default = $true;              }
-        @{ name = 'Identity';                                            default = $true;              }
-        @{ name = 'ImapEnabled';                                         default = $true; set = $true; }
-        @{ name = 'ImapEnableExactRFC822Size';                           set = $true;                  }
-        @{ name = 'ImapForceICalForCalendarRetrievalOption';             set = $true;                  }
-        @{ name = 'ImapMessagesRetrievalMimeFormat';                     set = $true;                  }
-        @{ name = 'ImapSuppressReadReceipt';                             set = $true;                  }
-        @{ name = 'ImapUseProtocolDefaults';                             set = $true;                  }
-        @{ name = 'InternalImapSettings';                                                              }
-        @{ name = 'InternalPopSettings';                                                               }
-        @{ name = 'InternalSmtpSettings';                                                              }
-        @{ name = 'IsOptimizedForAccessibility';                         set = $true;                  }
-        @{ name = 'IsValid';                                             default = $true;              }
-        @{ name = 'LegacyExchangeDN';                                                                  }
-        @{ name = 'LinkedMasterAccount';                                 default = $true;              }
-        @{ name = 'MAPIBlockOutlookExternalConnectivity';                set = $true;                  }
-        @{ name = 'MAPIBlockOutlookNonCachedMode';                       set = $true;                  }
-        @{ name = 'MAPIBlockOutlookRpcHttp';                             set = $true;                  }
-        @{ name = 'MAPIBlockOutlookVersions';                            set = $true;                  }
-        @{ name = 'MAPIEnabled';                                         set = $true;                  }
-        @{ name = 'MapiHttpEnabled';                                     set = $true;                  }
-        @{ name = 'Name';                                                set = $true;                  }
-        @{ name = 'ObjectCategory';                                                                    }
-        @{ name = 'ObjectClass';                                                                       }
-        @{ name = 'ObjectState';                                                                       }
-        @{ name = 'OrganizationId';                                                                    }
-        @{ name = 'OriginatingServer';                                                                 }
-        @{ name = 'OWAEnabled';                                          default = $true; set = $true; }
-        @{ name = 'OWAforDevicesEnabled';                                set = $true;                  }
-        @{ name = 'OwaMailboxPolicy';                                    set = $true;                  }
-        @{ name = 'PopEnabled';                                          default = $true; set = $true; }
-        @{ name = 'PopEnableExactRFC822Size';                            set = $true;                  }
-        @{ name = 'PopForceICalForCalendarRetrievalOption';              set = $true;                  }
-        @{ name = 'PopMessageDeleteEnabled';                                                           }
-        @{ name = 'PopMessagesRetrievalMimeFormat';                      set = $true;                  }
-        @{ name = 'PopSuppressReadReceipt';                              set = $true;                  }
-        @{ name = 'PopUseProtocolDefaults';                              set = $true;                  }
-        @{ name = 'PrimarySmtpAddress';                                  default = $true; set = $true; }
-        @{ name = 'PSComputerName';                                                                    }
-        @{ name = 'PSShowComputerName';                                                                }
-        @{ name = 'PublicFolderClientAccess';                            set = $true;                  }
-        @{ name = 'RunspaceId';                                                                        }
-        @{ name = 'SamAccountName';                                      set = $true;                  }
-        @{ name = 'ServerLegacyDN';                                                                    }
-        @{ name = 'ServerName';                                                                        }
-        @{ name = 'ShowGalAsDefaultView';                                set = $true;                  }
-        @{ name = 'UniversalOutlookEnabled';                             set = $true;                  }
-        @{ name = 'WhenChanged';                                                                       }
-        @{ name = 'WhenChangedUTC';                                                                    }
-        @{ name = 'WhenCreated';                                                                       }
-        @{ name = 'WhenCreatedUTC';                                                                    }
+        @{ name = 'ActiveSyncAllowedDeviceIDs';                          options = @('set')                      }
+        @{ name = 'ActiveSyncBlockedDeviceIDs';                          options = @('set')                      }
+        @{ name = 'ActiveSyncDebugLogging';                              options = @('set')                      }
+        @{ name = 'ActiveSyncEnabled';                                   options = @('default', 'set')           }
+        @{ name = 'ActiveSyncMailboxPolicy';                             options = @('set')                      }
+        @{ name = 'ActiveSyncMailboxPolicyIsDefaulted';                                                          }
+        @{ name = 'ActiveSyncSuppressReadReceipt';                       options = @('set')                      }
+        @{ name = 'DisplayName';                                         options = @('set')                      }
+        @{ name = 'DistinguishedName';                                                                           }
+        @{ name = 'ECPEnabled';                                          options = @('default', 'set')           }
+        @{ name = 'EmailAddresses';                                      options = @('set')                      }
+        @{ name = 'EwsAllowEntourage';                                   options = @('set')                      }
+        @{ name = 'EwsAllowList';                                        options = @('set')                      }
+        @{ name = 'EwsAllowMacOutlook';                                  options = @('set')                      }
+        @{ name = 'EwsAllowOutlook';                                     options = @('set')                      }
+        @{ name = 'EwsApplicationAccessPolicy';                          options = @('set')                      }
+        @{ name = 'EwsBlockList';                                        options = @('set')                      }
+        @{ name = 'EwsEnabled';                                          options = @('set')                      }
+        @{ name = 'ExchangeVersion';                                                                             }
+        @{ name = 'ExternalImapSettings';                                                                        }
+        @{ name = 'ExternalPopSettings';                                                                         }
+        @{ name = 'ExternalSmtpSettings';                                                                        }
+        @{ name = 'Guid';                                                options = @('default', 'key')           }
+        @{ name = 'HasActiveSyncDevicePartnership';                      options = @('set')                      }
+        @{ name = 'Id';                                                  options = @('default')                  }
+        @{ name = 'Identity';                                            options = @('default')                  }
+        @{ name = 'ImapEnabled';                                         options = @('default', 'set')           }
+        @{ name = 'ImapEnableExactRFC822Size';                           options = @('set')                      }
+        @{ name = 'ImapForceICalForCalendarRetrievalOption';             options = @('set')                      }
+        @{ name = 'ImapMessagesRetrievalMimeFormat';                     options = @('set')                      }
+        @{ name = 'ImapSuppressReadReceipt';                             options = @('set')                      }
+        @{ name = 'ImapUseProtocolDefaults';                             options = @('set')                      }
+        @{ name = 'InternalImapSettings';                                                                        }
+        @{ name = 'InternalPopSettings';                                                                         }
+        @{ name = 'InternalSmtpSettings';                                                                        }
+        @{ name = 'IsOptimizedForAccessibility';                         options = @('set')                      }
+        @{ name = 'IsValid';                                             options = @('default')                  }
+        @{ name = 'LegacyExchangeDN';                                                                            }
+        @{ name = 'LinkedMasterAccount';                                 options = @('default')                  }
+        @{ name = 'MAPIBlockOutlookExternalConnectivity';                options = @('set')                      }
+        @{ name = 'MAPIBlockOutlookNonCachedMode';                       options = @('set')                      }
+        @{ name = 'MAPIBlockOutlookRpcHttp';                             options = @('set')                      }
+        @{ name = 'MAPIBlockOutlookVersions';                            options = @('set')                      }
+        @{ name = 'MAPIEnabled';                                         options = @('set')                      }
+        @{ name = 'MapiHttpEnabled';                                     options = @('set')                      }
+        @{ name = 'Name';                                                options = @('set')                      }
+        @{ name = 'ObjectCategory';                                                                              }
+        @{ name = 'ObjectClass';                                                                                 }
+        @{ name = 'ObjectState';                                                                                 }
+        @{ name = 'OrganizationId';                                                                              }
+        @{ name = 'OriginatingServer';                                                                           }
+        @{ name = 'OWAEnabled';                                          options = @('default', 'set')           }
+        @{ name = 'OWAforDevicesEnabled';                                options = @('set')                      }
+        @{ name = 'OwaMailboxPolicy';                                    options = @('set')                      }
+        @{ name = 'PopEnabled';                                          options = @('default', 'set')           }
+        @{ name = 'PopEnableExactRFC822Size';                            options = @('set')                      }
+        @{ name = 'PopForceICalForCalendarRetrievalOption';              options = @('set')                      }
+        @{ name = 'PopMessageDeleteEnabled';                                                                     }
+        @{ name = 'PopMessagesRetrievalMimeFormat';                      options = @('set')                      }
+        @{ name = 'PopSuppressReadReceipt';                              options = @('set')                      }
+        @{ name = 'PopUseProtocolDefaults';                              options = @('set')                      }
+        @{ name = 'PrimarySmtpAddress';                                  options = @('default', 'set')           }
+        @{ name = 'PSComputerName';                                                                              }
+        @{ name = 'PSShowComputerName';                                                                          }
+        @{ name = 'PublicFolderClientAccess';                            options = @('set')                      }
+        @{ name = 'RunspaceId';                                                                                  }
+        @{ name = 'SamAccountName';                                      options = @('set')                      }
+        @{ name = 'ServerLegacyDN';                                                                              }
+        @{ name = 'ServerName';                                                                                  }
+        @{ name = 'ShowGalAsDefaultView';                                options = @('set')                      }
+        @{ name = 'UniversalOutlookEnabled';                             options = @('set')                      }
+        @{ name = 'WhenChanged';                                                                                 }
+        @{ name = 'WhenChangedUTC';                                                                              }
+        @{ name = 'WhenCreated';                                                                                 }
+        @{ name = 'WhenCreatedUTC';                                                                              }
     )
 
     Mailbox = @(
-        @{ name = 'AcceptMessagesOnlyFrom';                              set = $true;                                  }
-        @{ name = 'AcceptMessagesOnlyFromDLMembers';                     set = $true;                                  }
-        @{ name = 'AcceptMessagesOnlyFromSendersOrMembers';              set = $true;                                  }
-        @{ name = 'AccountDisabled';                                     set = $true;                                  }
-        @{ name = 'AddressBookPolicy';                                   enable = $true; set = $true;                  }
-        @{ name = 'AddressListMembership';                                                                             }
-        @{ name = 'AdminDisplayVersion';                                                                               }
-        @{ name = 'AdministrativeUnits';                                                                               }
-        @{ name = 'AggregatedMailboxGuids';                                                                            }
-        @{ name = 'Alias';                                               default = $true; enable = $true; set = $true; }
-        @{ name = 'AntispamBypassEnabled';                               set = $true;                                  }
-        @{ name = 'ArbitrationMailbox';                                  set = $true;                                  }
-        @{ name = 'ArchiveDatabase';                                     enable = $true; set = $true;                  }
-        @{ name = 'ArchiveDomain';                                       enable = $true; set = $true;                  }
-        @{ name = 'ArchiveGuid';                                         enable = $true;                               }
-        @{ name = 'ArchiveName';                                         default = $true; enable = $true; set = $true; }
-        @{ name = 'ArchiveQuota';                                        set = $true;                                  }
-        @{ name = 'ArchiveRelease';                                                                                    }
-        @{ name = 'ArchiveState';                                        set = $true;                                  }
-        @{ name = 'ArchiveStatus';                                                                                     }
-        @{ name = 'ArchiveWarningQuota';                                 set = $true;                                  }
-        @{ name = 'AuditAdmin';                                          set = $true;                                  }
-        @{ name = 'AuditDelegate';                                       set = $true;                                  }
-        @{ name = 'AuditEnabled';                                        set = $true;                                  }
-        @{ name = 'AuditLogAgeLimit';                                    set = $true;                                  }
-        @{ name = 'AuditOwner';                                          set = $true;                                  }
-        @{ name = 'AutoExpandingArchiveEnabled';                                                                       }
-        @{ name = 'BypassModerationFromSendersOrMembers';                set = $true;                                  }
-        @{ name = 'CalendarLoggingQuota';                                set = $true;                                  }
-        @{ name = 'CalendarRepairDisabled';                              set = $true;                                  }
-        @{ name = 'CalendarVersionStoreDisabled';                        set = $true;                                  }
-        @{ name = 'ComplianceTagHoldApplied';                                                                          }
-        @{ name = 'CustomAttribute1';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute2';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute3';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute4';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute5';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute6';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute7';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute8';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute9';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute10';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute11';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute12';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute13';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute14';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute15';                                   set = $true;                                  }
-        @{ name = 'Database';                                            default = $true; enable = $true; set = $true; }
-        @{ name = 'DataEncryptionPolicy';                                set = $true;                                  }
-        @{ name = 'DefaultPublicFolderMailbox';                          set = $true;                                  }
-        @{ name = 'DelayHoldApplied';                                                                                  }
-        @{ name = 'DeliverToMailboxAndForward';                          set = $true;                                  }
-        @{ name = 'DisabledArchiveDatabase';                                                                           }
-        @{ name = 'DisabledArchiveGuid';                                                                               }
-        @{ name = 'DisabledMailboxLocations';                                                                          }
-        @{ name = 'DisableThrottling';                                   set = $true;                                  }
-        @{ name = 'DisplayName';                                         default = $true; enable = $true; set = $true; }
-        @{ name = 'DistinguishedName';                                                                                 }
-        @{ name = 'DowngradeHighPriorityMessagesEnabled';                set = $true;                                  }
-        @{ name = 'EffectivePublicFolderMailbox';                                                                      }
-        @{ name = 'ElcProcessingDisabled';                               set = $true;                                  }
-        @{ name = 'EmailAddresses';                                      default = $true; set = $true;                 }
-        @{ name = 'EmailAddressPolicyEnabled';                           set = $true;                                  }
-        @{ name = 'EndDateForRetentionHold';                             set = $true;                                  }
-        @{ name = 'ExchangeGuid';                                                                                      }
-        @{ name = 'ExchangeUserAccountControl';                                                                        }
-        @{ name = 'ExchangeSecurityDescriptor';                                                                        }
-        @{ name = 'ExchangeVersion';                                                                                   }
-        @{ name = 'ExtensionCustomAttribute1';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute2';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute3';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute4';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute5';                           set = $true;                                  }
-        @{ name = 'Extensions';                                                                                        }
-        @{ name = 'ExternalDirectoryObjectId';                                                                         }
-        @{ name = 'ExternalOofOptions';                                  set = $true;                                  }
-        @{ name = 'ForwardingAddress';                                   set = $true;                                  }
-        @{ name = 'ForwardingSmtpAddress';                               set = $true;                                  }
-        @{ name = 'GeneratedOfflineAddressBooks';                                                                      }
-        @{ name = 'GrantSendOnBehalfTo';                                 set = $true;                                  }
-        @{ name = 'Guid';                                                default = $true; key = $true;                 }
-        @{ name = 'HasPicture';                                                                                        }
-        @{ name = 'HasSnackyAppData';                                                                                  }
-        @{ name = 'HasSpokenName';                                                                                     }
-        @{ name = 'HiddenFromAddressListsEnabled';                       set = $true;                                  }
-        @{ name = 'Id';                                                  default = $true;                              }
-        @{ name = 'Identity';                                                                                          }
-        @{ name = 'ImListMigrationCompleted';                            set = $true;                                  }
-        @{ name = 'ImmutableId';                                         set = $true;                                  }
-        @{ name = 'InactiveMailboxRetireTime';                                                                         }
-        @{ name = 'IncludeInGarbageCollection';                                                                        }
-        @{ name = 'InPlaceHolds';                                                                                      }
-        @{ name = 'IsDirSynced';                                                                                       }
-        @{ name = 'IsExcludedFromServingHierarchy';                      set = $true;                                  }
-        @{ name = 'IsHierarchyReady';                                    set = $true;                                  }
-        @{ name = 'IsHierarchySyncEnabled';                              set = $true;                                  }
-        @{ name = 'IsInactiveMailbox';                                                                                 }
-        @{ name = 'IsLinked';                                                                                          }
-        @{ name = 'IsMachineToPersonTextMessagingEnabled';                                                             }
-        @{ name = 'IsMailboxEnabled';                                                                                  }
-        @{ name = 'IsPersonToPersonTextMessagingEnabled';                                                              }
-        @{ name = 'IsResource';                                                                                        }
-        @{ name = 'IsRootPublicFolderMailbox';                                                                         }
-        @{ name = 'IsShared';                                                                                          }
-        @{ name = 'IsSoftDeletedByDisable';                                                                            }
-        @{ name = 'IsSoftDeletedByRemove';                                                                             }
-        @{ name = 'IssueWarningQuota';                                   set = $true;                                  }
-        @{ name = 'IsValid';                                                                                           }
-        @{ name = 'JournalArchiveAddress';                               set = $true;                                  }
-        @{ name = 'Languages';                                           set = $true;                                  }
-        @{ name = 'LastExchangeChangedTime';                                                                           }
-        @{ name = 'LegacyExchangeDN';                                                                                  }
-        @{ name = 'LinkedMasterAccount';                                 enable = $true; set = $true;                  }
-        @{ name = 'LitigationHoldDate';                                  set = $true;                                  }
-        @{ name = 'LitigationHoldDuration';                              set = $true;                                  }
-        @{ name = 'LitigationHoldEnabled';                               set = $true;                                  }
-        @{ name = 'LitigationHoldOwner';                                 set = $true;                                  }
-        @{ name = 'MailboxContainerGuid';                                                                              }
-        @{ name = 'MailboxLocations';                                                                                  }
-        @{ name = 'MailboxMoveBatchName';                                                                              }
-        @{ name = 'MailboxMoveFlags';                                                                                  }
-        @{ name = 'MailboxMoveRemoteHostName';                                                                         }
-        @{ name = 'MailboxMoveSourceMDB';                                                                              }
-        @{ name = 'MailboxMoveStatus';                                                                                 }
-        @{ name = 'MailboxMoveTargetMDB';                                                                              }
-        @{ name = 'MailboxPlan';                                                                                       }
-        @{ name = 'MailboxProvisioningConstraint';                                                                     }
-        @{ name = 'MailboxProvisioningPreferences';                                                                    }
-        @{ name = 'MailboxRegion';                                       set = $true;                                  }
-        @{ name = 'MailboxRegionLastUpdateTime';                                                                       }
-        @{ name = 'MailboxRelease';                                                                                    }
-        @{ name = 'MailTip';                                             set = $true;                                  }
-        @{ name = 'MailTipTranslations';                                 set = $true;                                  }
-        @{ name = 'ManagedFolderMailboxPolicy';                          enable = $true; set = $true;                  }
-        @{ name = 'MaxBlockedSenders';                                   set = $true;                                  }
-        @{ name = 'MaxReceiveSize';                                      set = $true;                                  }
-        @{ name = 'MaxSafeSenders';                                      set = $true;                                  }
-        @{ name = 'MaxSendSize';                                         set = $true;                                  }
-        @{ name = 'MessageCopyForSendOnBehalfEnabled';                   set = $true;                                  }
-        @{ name = 'MessageCopyForSentAsEnabled';                         set = $true;                                  }
-        @{ name = 'MessageTrackingReadStatusEnabled';                                                                  }
-        @{ name = 'MicrosoftOnlineServicesID';                           set = $true;                                  }
-        @{ name = 'ModeratedBy';                                         set = $true;                                  }
-        @{ name = 'ModerationEnabled';                                   set = $true;                                  }
-        @{ name = 'Name';                                                set = $true;                                  }
-        @{ name = 'NetID';                                                                                             }
-        @{ name = 'ObjectCategory';                                                                                    }
-        @{ name = 'ObjectClass';                                                                                       }
-        @{ name = 'ObjectState';                                                                                       }
-        @{ name = 'Office';                                              set = $true;                                  }
-        @{ name = 'OfflineAddressBook';                                  set = $true;                                  }
-        @{ name = 'OrganizationalUnit';                                                                                }
-        @{ name = 'OrganizationId';                                                                                    }
-        @{ name = 'OriginatingServer';                                                                                 }
-        @{ name = 'OrphanSoftDeleteTrackingTime';                                                                      }
-        @{ name = 'PersistedCapabilities';                                                                             }
-        @{ name = 'PoliciesExcluded';                                                                                  }
-        @{ name = 'PoliciesIncluded';                                                                                  }
-        @{ name = 'PrimarySmtpAddress';                                  default = $true; enable = $true; set = $true; }
-        @{ name = 'ProhibitSendQuota';                                   set = $true;                                  }
-        @{ name = 'ProhibitSendReceiveQuota';                            set = $true;                                  }
-        @{ name = 'ProtocolSettings';                                                                                  }
-        @{ name = 'PSComputerName';                                                                                    }
-        @{ name = 'PSShowComputerName';                                                                                }
-        @{ name = 'QueryBaseDN';                                         set = $true;                                  }
-        @{ name = 'QueryBaseDNRestrictionEnabled';                                                                     }
-        @{ name = 'RecipientLimits';                                     set = $true;                                  }
-        @{ name = 'RecipientType';                                                                                     }
-        @{ name = 'RecipientTypeDetails';                                                                              }
-        @{ name = 'ReconciliationId';                                                                                  }
-        @{ name = 'RecoverableItemsQuota';                               set = $true;                                  }
-        @{ name = 'RecoverableItemsWarningQuota';                        set = $true;                                  }
-        @{ name = 'RejectMessagesFrom';                                  set = $true;                                  }
-        @{ name = 'RejectMessagesFromDLMembers';                         set = $true;                                  }
-        @{ name = 'RejectMessagesFromSendersOrMembers';                  set = $true;                                  }
-        @{ name = 'RemoteAccountPolicy';                                                                               }
-        @{ name = 'RemoteRecipientType';                                 set = $true;                                  }
-        @{ name = 'RequireSenderAuthenticationEnabled';                  set = $true;                                  }
-        @{ name = 'ResetPasswordOnNextLogon';                            set = $true;                                  }
-        @{ name = 'ResourceCapacity';                                    set = $true;                                  }
-        @{ name = 'ResourceCustom';                                      set = $true;                                  }
-        @{ name = 'ResourceType';                                                                                      }
-        @{ name = 'RetainDeletedItemsFor';                               set = $true;                                  }
-        @{ name = 'RetainDeletedItemsUntilBackup';                       set = $true;                                  }
-        @{ name = 'RetentionComment';                                    set = $true;                                  }
-        @{ name = 'RetentionHoldEnabled';                                set = $true;                                  }
-        @{ name = 'RetentionPolicy';                                     enable = $true; set = $true;                  }
-        @{ name = 'RetentionUrl';                                        set = $true;                                  }
-        @{ name = 'RoleAssignmentPolicy';                                enable = $true; set = $true;                  }
-        @{ name = 'RoomMailboxAccountEnabled';                                                                         }
-        @{ name = 'RulesQuota';                                          set = $true;                                  }
-        @{ name = 'RunspaceId';                                                                                        }
-        @{ name = 'SamAccountName';                                      set = $true;                                  }
-        @{ name = 'SCLDeleteEnabled';                                    set = $true;                                  }
-        @{ name = 'SCLDeleteThreshold';                                  set = $true;                                  }
-        @{ name = 'SCLJunkEnabled';                                      set = $true;                                  }
-        @{ name = 'SCLJunkThreshold';                                    set = $true;                                  }
-        @{ name = 'SCLQuarantineEnabled';                                set = $true;                                  }
-        @{ name = 'SCLQuarantineThreshold';                              set = $true;                                  }
-        @{ name = 'SCLRejectEnabled';                                    set = $true;                                  }
-        @{ name = 'SCLRejectThreshold';                                  set = $true;                                  }
-        @{ name = 'SendModerationNotifications';                         set = $true;                                  }
-        @{ name = 'ServerLegacyDN';                                                                                    }
-        @{ name = 'ServerName';                                                                                        }
-        @{ name = 'SharingPolicy';                                       set = $true;                                  }
-        @{ name = 'SiloName';                                                                                          }
-        @{ name = 'SimpleDisplayName';                                   set = $true;                                  }
-        @{ name = 'SingleItemRecoveryEnabled';                           set = $true;                                  }
-        @{ name = 'SKUAssigned';                                                                                       }
-        @{ name = 'SourceAnchor';                                                                                      }
-        @{ name = 'StartDateForRetentionHold';                           set = $true;                                  }
-        @{ name = 'StsRefreshTokensValidFrom';                           set = $true;                                  }
-        @{ name = 'ThrottlingPolicy';                                    set = $true;                                  }
-        @{ name = 'UMDtmfMap';                                           set = $true;                                  }
-        @{ name = 'UMEnabled';                                                                                         }
-        @{ name = 'UnifiedMailbox';                                                                                    }
-        @{ name = 'UsageLocation';                                                                                     }
-        @{ name = 'UseDatabaseQuotaDefaults';                            set = $true;                                  }
-        @{ name = 'UseDatabaseRetentionDefaults';                        set = $true;                                  }
-        @{ name = 'UserCertificate';                                     set = $true;                                  }
-        @{ name = 'UserPrincipalName';                                   set = $true;                                  }
-        @{ name = 'UserSMimeCertificate';                                set = $true;                                  }
-        @{ name = 'WasInactiveMailbox';                                                                                }
-        @{ name = 'WhenChanged';                                                                                       }
-        @{ name = 'WhenChangedUTC';                                                                                    }
-        @{ name = 'WhenCreated';                                                                                       }
-        @{ name = 'WhenCreatedUTC';                                                                                    }
-        @{ name = 'WhenMailboxCreated';                                                                                }
-        @{ name = 'WhenSoftDeleted';                                                                                   }
-        @{ name = 'WindowsEmailAddress';                                 set = $true;                                  }
-        @{ name = 'WindowsLiveID';                                                                                     }
+        @{ name = 'AcceptMessagesOnlyFrom';                              options = @('set')                      }
+        @{ name = 'AcceptMessagesOnlyFromDLMembers';                     options = @('set')                      }
+        @{ name = 'AcceptMessagesOnlyFromSendersOrMembers';              options = @('set')                      }
+        @{ name = 'AccountDisabled';                                     options = @('set')                      }
+        @{ name = 'AddressBookPolicy';                                   options = @('enable', 'set')            }
+        @{ name = 'AddressListMembership';                                                                       }
+        @{ name = 'AdminDisplayVersion';                                                                         }
+        @{ name = 'AdministrativeUnits';                                                                         }
+        @{ name = 'AggregatedMailboxGuids';                                                                      }
+        @{ name = 'Alias';                                               options = @('default', 'enable', 'set') }
+        @{ name = 'AntispamBypassEnabled';                               options = @('set')                      }
+        @{ name = 'ArbitrationMailbox';                                  options = @('set')                      }
+        @{ name = 'ArchiveDatabase';                                     options = @('enable', 'set')            }
+        @{ name = 'ArchiveDomain';                                       options = @('enable', 'set')            }
+        @{ name = 'ArchiveGuid';                                         options = @('enable')                   }
+        @{ name = 'ArchiveName';                                         options = @('default', 'enable', 'set') }
+        @{ name = 'ArchiveQuota';                                        options = @('set')                      }
+        @{ name = 'ArchiveRelease';                                                                              }
+        @{ name = 'ArchiveState';                                        options = @('set')                      }
+        @{ name = 'ArchiveStatus';                                                                               }
+        @{ name = 'ArchiveWarningQuota';                                 options = @('set')                      }
+        @{ name = 'AuditAdmin';                                          options = @('set')                      }
+        @{ name = 'AuditDelegate';                                       options = @('set')                      }
+        @{ name = 'AuditEnabled';                                        options = @('set')                      }
+        @{ name = 'AuditLogAgeLimit';                                    options = @('set')                      }
+        @{ name = 'AuditOwner';                                          options = @('set')                      }
+        @{ name = 'AutoExpandingArchiveEnabled';                                                                 }
+        @{ name = 'BypassModerationFromSendersOrMembers';                options = @('set')                      }
+        @{ name = 'CalendarLoggingQuota';                                options = @('set')                      }
+        @{ name = 'CalendarRepairDisabled';                              options = @('set')                      }
+        @{ name = 'CalendarVersionStoreDisabled';                        options = @('set')                      }
+        @{ name = 'ComplianceTagHoldApplied';                                                                    }
+        @{ name = 'CustomAttribute1';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute2';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute3';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute4';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute5';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute6';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute7';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute8';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute9';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute10';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute11';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute12';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute13';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute14';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute15';                                   options = @('set')                      }
+        @{ name = 'Database';                                            options = @('default', 'enable', 'set') }
+        @{ name = 'DataEncryptionPolicy';                                options = @('set')                      }
+        @{ name = 'DefaultPublicFolderMailbox';                          options = @('set')                      }
+        @{ name = 'DelayHoldApplied';                                                                            }
+        @{ name = 'DeliverToMailboxAndForward';                          options = @('set')                      }
+        @{ name = 'DisabledArchiveDatabase';                                                                     }
+        @{ name = 'DisabledArchiveGuid';                                                                         }
+        @{ name = 'DisabledMailboxLocations';                                                                    }
+        @{ name = 'DisableThrottling';                                   options = @('set')                      }
+        @{ name = 'DisplayName';                                         options = @('default', 'enable', 'set') }
+        @{ name = 'DistinguishedName';                                                                           }
+        @{ name = 'DowngradeHighPriorityMessagesEnabled';                options = @('set')                      }
+        @{ name = 'EffectivePublicFolderMailbox';                                                                }
+        @{ name = 'ElcProcessingDisabled';                               options = @('set')                      }
+        @{ name = 'EmailAddresses';                                      options = @('default', 'set')           }
+        @{ name = 'EmailAddressPolicyEnabled';                           options = @('set')                      }
+        @{ name = 'EndDateForRetentionHold';                             options = @('set')                      }
+        @{ name = 'ExchangeGuid';                                                                                }
+        @{ name = 'ExchangeUserAccountControl';                                                                  }
+        @{ name = 'ExchangeSecurityDescriptor';                                                                  }
+        @{ name = 'ExchangeVersion';                                                                             }
+        @{ name = 'ExtensionCustomAttribute1';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute2';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute3';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute4';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute5';                           options = @('set')                      }
+        @{ name = 'Extensions';                                                                                  }
+        @{ name = 'ExternalDirectoryObjectId';                                                                   }
+        @{ name = 'ExternalOofOptions';                                  options = @('set')                      }
+        @{ name = 'ForwardingAddress';                                   options = @('set')                      }
+        @{ name = 'ForwardingSmtpAddress';                               options = @('set')                      }
+        @{ name = 'GeneratedOfflineAddressBooks';                                                                }
+        @{ name = 'GrantSendOnBehalfTo';                                 options = @('set')                      }
+        @{ name = 'Guid';                                                options = @('default', 'key')           }
+        @{ name = 'HasPicture';                                                                                  }
+        @{ name = 'HasSnackyAppData';                                                                            }
+        @{ name = 'HasSpokenName';                                                                               }
+        @{ name = 'HiddenFromAddressListsEnabled';                       options = @('set')                      }
+        @{ name = 'Id';                                                  options = @('default')                  }
+        @{ name = 'Identity';                                                                                    }
+        @{ name = 'ImListMigrationCompleted';                            options = @('set')                      }
+        @{ name = 'ImmutableId';                                         options = @('set')                      }
+        @{ name = 'InactiveMailboxRetireTime';                                                                   }
+        @{ name = 'IncludeInGarbageCollection';                                                                  }
+        @{ name = 'InPlaceHolds';                                                                                }
+        @{ name = 'IsDirSynced';                                                                                 }
+        @{ name = 'IsExcludedFromServingHierarchy';                      options = @('set')                      }
+        @{ name = 'IsHierarchyReady';                                    options = @('set')                      }
+        @{ name = 'IsHierarchySyncEnabled';                              options = @('set')                      }
+        @{ name = 'IsInactiveMailbox';                                                                           }
+        @{ name = 'IsLinked';                                                                                    }
+        @{ name = 'IsMachineToPersonTextMessagingEnabled';                                                       }
+        @{ name = 'IsMailboxEnabled';                                                                            }
+        @{ name = 'IsPersonToPersonTextMessagingEnabled';                                                        }
+        @{ name = 'IsResource';                                                                                  }
+        @{ name = 'IsRootPublicFolderMailbox';                                                                   }
+        @{ name = 'IsShared';                                                                                    }
+        @{ name = 'IsSoftDeletedByDisable';                                                                      }
+        @{ name = 'IsSoftDeletedByRemove';                                                                       }
+        @{ name = 'IssueWarningQuota';                                   options = @('set')                      }
+        @{ name = 'IsValid';                                                                                     }
+        @{ name = 'JournalArchiveAddress';                               options = @('set')                      }
+        @{ name = 'Languages';                                           options = @('set')                      }
+        @{ name = 'LastExchangeChangedTime';                                                                     }
+        @{ name = 'LegacyExchangeDN';                                                                            }
+        @{ name = 'LinkedMasterAccount';                                 options = @('enable', 'set')            }
+        @{ name = 'LitigationHoldDate';                                  options = @('set')                      }
+        @{ name = 'LitigationHoldDuration';                              options = @('set')                      }
+        @{ name = 'LitigationHoldEnabled';                               options = @('set')                      }
+        @{ name = 'LitigationHoldOwner';                                 options = @('set')                      }
+        @{ name = 'MailboxContainerGuid';                                                                        }
+        @{ name = 'MailboxLocations';                                                                            }
+        @{ name = 'MailboxMoveBatchName';                                                                        }
+        @{ name = 'MailboxMoveFlags';                                                                            }
+        @{ name = 'MailboxMoveRemoteHostName';                                                                   }
+        @{ name = 'MailboxMoveSourceMDB';                                                                        }
+        @{ name = 'MailboxMoveStatus';                                                                           }
+        @{ name = 'MailboxMoveTargetMDB';                                                                        }
+        @{ name = 'MailboxPlan';                                                                                 }
+        @{ name = 'MailboxProvisioningConstraint';                                                               }
+        @{ name = 'MailboxProvisioningPreferences';                                                              }
+        @{ name = 'MailboxRegion';                                       options = @('set')                      }
+        @{ name = 'MailboxRegionLastUpdateTime';                                                                 }
+        @{ name = 'MailboxRelease';                                                                              }
+        @{ name = 'MailTip';                                             options = @('set')                      }
+        @{ name = 'MailTipTranslations';                                 options = @('set')                      }
+        @{ name = 'ManagedFolderMailboxPolicy';                          options = @('enable', 'set')            }
+        @{ name = 'MaxBlockedSenders';                                   options = @('set')                      }
+        @{ name = 'MaxReceiveSize';                                      options = @('set')                      }
+        @{ name = 'MaxSafeSenders';                                      options = @('set')                      }
+        @{ name = 'MaxSendSize';                                         options = @('set')                      }
+        @{ name = 'MessageCopyForSendOnBehalfEnabled';                   options = @('set')                      }
+        @{ name = 'MessageCopyForSentAsEnabled';                         options = @('set')                      }
+        @{ name = 'MessageTrackingReadStatusEnabled';                                                            }
+        @{ name = 'MicrosoftOnlineServicesID';                           options = @('set')                      }
+        @{ name = 'ModeratedBy';                                         options = @('set')                      }
+        @{ name = 'ModerationEnabled';                                   options = @('set')                      }
+        @{ name = 'Name';                                                options = @('set')                      }
+        @{ name = 'NetID';                                                                                       }
+        @{ name = 'ObjectCategory';                                                                              }
+        @{ name = 'ObjectClass';                                                                                 }
+        @{ name = 'ObjectState';                                                                                 }
+        @{ name = 'Office';                                              options = @('set')                      }
+        @{ name = 'OfflineAddressBook';                                  options = @('set')                      }
+        @{ name = 'OrganizationalUnit';                                                                          }
+        @{ name = 'OrganizationId';                                                                              }
+        @{ name = 'OriginatingServer';                                                                           }
+        @{ name = 'OrphanSoftDeleteTrackingTime';                                                                }
+        @{ name = 'PersistedCapabilities';                                                                       }
+        @{ name = 'PoliciesExcluded';                                                                            }
+        @{ name = 'PoliciesIncluded';                                                                            }
+        @{ name = 'PrimarySmtpAddress';                                  options = @('default', 'enable', 'set') }
+        @{ name = 'ProhibitSendQuota';                                   options = @('set')                      }
+        @{ name = 'ProhibitSendReceiveQuota';                            options = @('set')                      }
+        @{ name = 'ProtocolSettings';                                                                            }
+        @{ name = 'PSComputerName';                                                                              }
+        @{ name = 'PSShowComputerName';                                                                          }
+        @{ name = 'QueryBaseDN';                                         options = @('set')                      }
+        @{ name = 'QueryBaseDNRestrictionEnabled';                                                               }
+        @{ name = 'RecipientLimits';                                     options = @('set')                      }
+        @{ name = 'RecipientType';                                                                               }
+        @{ name = 'RecipientTypeDetails';                                                                        }
+        @{ name = 'ReconciliationId';                                                                            }
+        @{ name = 'RecoverableItemsQuota';                               options = @('set')                      }
+        @{ name = 'RecoverableItemsWarningQuota';                        options = @('set')                      }
+        @{ name = 'RejectMessagesFrom';                                  options = @('set')                      }
+        @{ name = 'RejectMessagesFromDLMembers';                         options = @('set')                      }
+        @{ name = 'RejectMessagesFromSendersOrMembers';                  options = @('set')                      }
+        @{ name = 'RemoteAccountPolicy';                                                                         }
+        @{ name = 'RemoteRecipientType';                                 options = @('set')                      }
+        @{ name = 'RequireSenderAuthenticationEnabled';                  options = @('set')                      }
+        @{ name = 'ResetPasswordOnNextLogon';                            options = @('set')                      }
+        @{ name = 'ResourceCapacity';                                    options = @('set')                      }
+        @{ name = 'ResourceCustom';                                      options = @('set')                      }
+        @{ name = 'ResourceType';                                                                                }
+        @{ name = 'RetainDeletedItemsFor';                               options = @('set')                      }
+        @{ name = 'RetainDeletedItemsUntilBackup';                       options = @('set')                      }
+        @{ name = 'RetentionComment';                                    options = @('set')                      }
+        @{ name = 'RetentionHoldEnabled';                                options = @('set')                      }
+        @{ name = 'RetentionPolicy';                                     options = @('enable', 'set')            }
+        @{ name = 'RetentionUrl';                                        options = @('set')                      }
+        @{ name = 'RoleAssignmentPolicy';                                options = @('enable', 'set')            }
+        @{ name = 'RoomMailboxAccountEnabled';                                                                   }
+        @{ name = 'RulesQuota';                                          options = @('set')                      }
+        @{ name = 'RunspaceId';                                                                                  }
+        @{ name = 'SamAccountName';                                      options = @('set')                      }
+        @{ name = 'SCLDeleteEnabled';                                    options = @('set')                      }
+        @{ name = 'SCLDeleteThreshold';                                  options = @('set')                      }
+        @{ name = 'SCLJunkEnabled';                                      options = @('set')                      }
+        @{ name = 'SCLJunkThreshold';                                    options = @('set')                      }
+        @{ name = 'SCLQuarantineEnabled';                                options = @('set')                      }
+        @{ name = 'SCLQuarantineThreshold';                              options = @('set')                      }
+        @{ name = 'SCLRejectEnabled';                                    options = @('set')                      }
+        @{ name = 'SCLRejectThreshold';                                  options = @('set')                      }
+        @{ name = 'SendModerationNotifications';                         options = @('set')                      }
+        @{ name = 'ServerLegacyDN';                                                                              }
+        @{ name = 'ServerName';                                                                                  }
+        @{ name = 'SharingPolicy';                                       options = @('set')                      }
+        @{ name = 'SiloName';                                                                                    }
+        @{ name = 'SimpleDisplayName';                                   options = @('set')                      }
+        @{ name = 'SingleItemRecoveryEnabled';                           options = @('set')                      }
+        @{ name = 'SKUAssigned';                                                                                 }
+        @{ name = 'SourceAnchor';                                                                                }
+        @{ name = 'StartDateForRetentionHold';                           options = @('set')                      }
+        @{ name = 'StsRefreshTokensValidFrom';                           options = @('set')                      }
+        @{ name = 'ThrottlingPolicy';                                    options = @('set')                      }
+        @{ name = 'UMDtmfMap';                                           options = @('set')                      }
+        @{ name = 'UMEnabled';                                                                                   }
+        @{ name = 'UnifiedMailbox';                                                                              }
+        @{ name = 'UsageLocation';                                                                               }
+        @{ name = 'UseDatabaseQuotaDefaults';                            options = @('set')                      }
+        @{ name = 'UseDatabaseRetentionDefaults';                        options = @('set')                      }
+        @{ name = 'UserCertificate';                                     options = @('set')                      }
+        @{ name = 'UserPrincipalName';                                   options = @('set')                      }
+        @{ name = 'UserSMimeCertificate';                                options = @('set')                      }
+        @{ name = 'WasInactiveMailbox';                                                                          }
+        @{ name = 'WhenChanged';                                                                                 }
+        @{ name = 'WhenChangedUTC';                                                                              }
+        @{ name = 'WhenCreated';                                                                                 }
+        @{ name = 'WhenCreatedUTC';                                                                              }
+        @{ name = 'WhenMailboxCreated';                                                                          }
+        @{ name = 'WhenSoftDeleted';                                                                             }
+        @{ name = 'WindowsEmailAddress';                                 options = @('set')                      }
+        @{ name = 'WindowsLiveID';                                                                               }
     )
 
     MailboxDatabase = @(
-        @{ name = 'ActivationPreference';                                                              }
-        @{ name = 'AdminDisplayName';                                                                  }
-        @{ name = 'AdminDisplayVersion';                                                               }
-        @{ name = 'AdministrativeGroup';                                                               }
-        @{ name = 'AllDatabaseCopies';                                                                 }
-        @{ name = 'AllowFileRestore';                                                                  }
-        @{ name = 'AutoDagExcludeFromMonitoring';                                                      }
-        @{ name = 'AutoDatabaseMountDial';                                                             }
-        @{ name = 'AvailableNewMailboxSpace';                                                          }
-        @{ name = 'BackgroundDatabaseMaintenance';                                                     }
-        @{ name = 'BackgroundDatabaseMaintenanceDelay';                                                }
-        @{ name = 'BackgroundDatabaseMaintenanceSerialization';                                        }
-        @{ name = 'BackupInProgress';                                                                  }
-        @{ name = 'CachedClosedTables';                                                                }
-        @{ name = 'CachePriority';                                                                     }
-        @{ name = 'CafeEndpoints';                                                                     }
-        @{ name = 'CalendarLoggingQuota';                                                              }
-        @{ name = 'CircularLoggingEnabled';                                                            }
-        @{ name = 'CreationSchemaVersion';                                                             }
-        @{ name = 'CurrentSchemaVersion';                                                              }
-        @{ name = 'DatabaseCopies';                                                                    }
-        @{ name = 'DatabaseCreated';                                                                   }
-        @{ name = 'DatabaseExtensionSize';                                                             }
-        @{ name = 'DatabaseGroup';                                                                     }
-        @{ name = 'DatabaseSize';                                        default = $true;              }
-        @{ name = 'DataMoveReplicationConstraint';                                                     }
-        @{ name = 'DeletedItemRetention';                                                              }
-        @{ name = 'Description';                                         default = $true;              }
-        @{ name = 'DistinguishedName';                                                                 }
-        @{ name = 'DumpsterServersNotAvailable';                                                       }
-        @{ name = 'DumpsterStatistics';                                                                }
-        @{ name = 'EdbFilePath';                                                                       }
-        @{ name = 'EventHistoryRetentionPeriod';                                                       }
-        @{ name = 'ExchangeLegacyDN';                                                                  }
-        @{ name = 'ExchangeVersion';                                     default = $true;              }
-        @{ name = 'Guid';                                                                              }
-        @{ name = 'Id';                                                  default = $true;              }
-        @{ name = 'Identity';                                            default = $true; key = $true; }
-        @{ name = 'IndexEnabled';                                                                      }
-        @{ name = 'InvalidDatabaseCopies';                                                             }
-        @{ name = 'IsExcludedFromInitialProvisioning';                                                 }
-        @{ name = 'IsExcludedFromProvisioning';                                                        }
-        @{ name = 'IsExcludedFromProvisioningBy';                                                      }
-        @{ name = 'IsExcludedFromProvisioningByOperator';                                              }
-        @{ name = 'IsExcludedFromProvisioningBySchemaVersionMonitoring';                               }
-        @{ name = 'IsExcludedFromProvisioningBySpaceMonitoring';                                       }
-        @{ name = 'IsExcludedFromProvisioningDueToLogicalCorruption';                                  }
-        @{ name = 'IsExcludedFromProvisioningForDraining';                                             }
-        @{ name = 'IsExcludedFromProvisioningReason';                                                  }
-        @{ name = 'IsMailboxDatabase';                                   default = $true;              }
-        @{ name = 'IsPublicFolderDatabase';                              default = $true;              }
-        @{ name = 'IssueWarningQuota';                                   default = $true;              }
-        @{ name = 'IsSuspendedFromProvisioning';                         default = $true;              }
-        @{ name = 'IsValid';                                             default = $true;              }
-        @{ name = 'JournalRecipient';                                                                  }
-        @{ name = 'LastCopyBackup';                                                                    }
-        @{ name = 'LastDifferentialBackup';                                                            }
-        @{ name = 'LastFullBackup';                                                                    }
-        @{ name = 'LastIncrementalBackup';                                                             }
-        @{ name = 'LogBuffers';                                                                        }
-        @{ name = 'LogCheckpointDepth';                                                                }
-        @{ name = 'LogFilePrefix';                                                                     }
-        @{ name = 'LogFileSize';                                                                       }
-        @{ name = 'LogFolderPath';                                                                     }
-        @{ name = 'MailboxLoadBalanceEnabled';                                                         }
-        @{ name = 'MailboxLoadBalanceMaximumEdbFileSize';                                              }
-        @{ name = 'MailboxLoadBalanceOverloadedThreshold';                                             }
-        @{ name = 'MailboxLoadBalanceRelativeLoadCapacity';                                            }
-        @{ name = 'MailboxLoadBalanceUnderloadedThreshold';                                            }
-        @{ name = 'MailboxProvisioningAttributes';                                                     }
-        @{ name = 'MailboxRetention';                                                                  }
-        @{ name = 'MaintenanceSchedule';                                                               }
-        @{ name = 'MasterServerOrAvailabilityGroup';                                                   }
-        @{ name = 'MasterType';                                                                        }
-        @{ name = 'MaximumBackgroundDatabaseMaintenanceInterval';                                      }
-        @{ name = 'MaximumCursors';                                                                    }
-        @{ name = 'MaximumOpenTables';                                                                 }
-        @{ name = 'MaximumPreReadPages';                                                               }
-        @{ name = 'MaximumReplayPreReadPages';                                                         }
-        @{ name = 'MaximumSessions';                                                                   }
-        @{ name = 'MaximumTemporaryTables';                                                            }
-        @{ name = 'MaximumVersionStorePages';                                                          }
-        @{ name = 'MCDBAvailableSpace';                                                                }
-        @{ name = 'MCDBSize';                                                                          }
-        @{ name = 'MetaCacheDatabaseFilePath';                                                         }
-        @{ name = 'MetaCacheDatabaseFolderPath';                                                       }
-        @{ name = 'MetaCacheDatabaseMaxCapacityInBytes';                                               }
-        @{ name = 'MetaCacheDatabaseMountpointFolderPath';                                             }
-        @{ name = 'MetaCacheDatabaseRootFolderPath';                                                   }
-        @{ name = 'MetaCacheDatabaseVolumesRootFolderPath';                                            }
-        @{ name = 'MimimumBackgroundDatabaseMaintenanceInterval';                                      }
-        @{ name = 'MountAtStartup';                                                                    }
-        @{ name = 'Mounted';                                                                           }
-        @{ name = 'MountedOnServer';                                                                   }
-        @{ name = 'Name';                                                                              }
-        @{ name = 'ObjectCategory';                                                                    }
-        @{ name = 'ObjectClass';                                                                       }
-        @{ name = 'ObjectState';                                                                       }
-        @{ name = 'OfflineAddressBook';                                                                }
-        @{ name = 'Organization';                                                                      }
-        @{ name = 'OrganizationId';                                                                    }
-        @{ name = 'OriginalDatabase';                                                                  }
-        @{ name = 'OriginatingServer';                                   default = $true;              }
-        @{ name = 'PreferredVersionStorePages';                                                        }
-        @{ name = 'ProhibitSendQuota';                                                                 }
-        @{ name = 'ProhibitSendReceiveQuota';                                                          }
-        @{ name = 'PSComputerName';                                                                    }
-        @{ name = 'PSShowComputerName';                                                                }
-        @{ name = 'PublicFolderDatabase';                                                              }
-        @{ name = 'QuotaNotificationSchedule';                                                         }
-        @{ name = 'RecoverableItemsQuota';                                                             }
-        @{ name = 'RecoverableItemsWarningQuota';                                                      }
-        @{ name = 'Recovery';                                                                          }
-        @{ name = 'ReplayBackgroundDatabaseMaintenance';                                               }
-        @{ name = 'ReplayBackgroundDatabaseMaintenanceDelay';                                          }
-        @{ name = 'ReplayCachePriority';                                                               }
-        @{ name = 'ReplayCheckpointDepth';                                                             }
-        @{ name = 'ReplayLagTimes';                                                                    }
-        @{ name = 'ReplicationType';                                                                   }
-        @{ name = 'RequestedSchemaVersion';                                                            }
-        @{ name = 'RetainDeletedItemsUntilBackup';                                                     }
-        @{ name = 'RpcClientAccessServer';                                                             }
-        @{ name = 'RunspaceId';                                                                        }
-        @{ name = 'Server';                                                                            }
-        @{ name = 'ServerName';                                                                        }
-        @{ name = 'Servers';                                                                           }
-        @{ name = 'SnapshotLastCopyBackup';                                                            }
-        @{ name = 'SnapshotLastDifferentialBackup';                                                    }
-        @{ name = 'SnapshotLastFullBackup';                                                            }
-        @{ name = 'SnapshotLastIncrementalBackup';                                                     }
-        @{ name = 'TemporaryDataFolderPath';                                                           }
-        @{ name = 'TruncationLagTimes';                                                                }
-        @{ name = 'WhenChanged';                                                                       }
-        @{ name = 'WhenChangedUTC';                                                                    }
-        @{ name = 'WhenCreated';                                                                       }
-        @{ name = 'WhenCreatedUTC';                                                                    }
-        @{ name = 'WorkerProcessId';                                                                   }
+        @{ name = 'ActivationPreference';                                                                        }
+        @{ name = 'AdminDisplayName';                                                                            }
+        @{ name = 'AdminDisplayVersion';                                                                         }
+        @{ name = 'AdministrativeGroup';                                                                         }
+        @{ name = 'AllDatabaseCopies';                                                                           }
+        @{ name = 'AllowFileRestore';                                                                            }
+        @{ name = 'AutoDagExcludeFromMonitoring';                                                                }
+        @{ name = 'AutoDatabaseMountDial';                                                                       }
+        @{ name = 'AvailableNewMailboxSpace';                                                                    }
+        @{ name = 'BackgroundDatabaseMaintenance';                                                               }
+        @{ name = 'BackgroundDatabaseMaintenanceDelay';                                                          }
+        @{ name = 'BackgroundDatabaseMaintenanceSerialization';                                                  }
+        @{ name = 'BackupInProgress';                                                                            }
+        @{ name = 'CachedClosedTables';                                                                          }
+        @{ name = 'CachePriority';                                                                               }
+        @{ name = 'CafeEndpoints';                                                                               }
+        @{ name = 'CalendarLoggingQuota';                                                                        }
+        @{ name = 'CircularLoggingEnabled';                                                                      }
+        @{ name = 'CreationSchemaVersion';                                                                       }
+        @{ name = 'CurrentSchemaVersion';                                                                        }
+        @{ name = 'DatabaseCopies';                                                                              }
+        @{ name = 'DatabaseCreated';                                                                             }
+        @{ name = 'DatabaseExtensionSize';                                                                       }
+        @{ name = 'DatabaseGroup';                                                                               }
+        @{ name = 'DatabaseSize';                                        options = @('default')                  }
+        @{ name = 'DataMoveReplicationConstraint';                                                               }
+        @{ name = 'DeletedItemRetention';                                                                        }
+        @{ name = 'Description';                                         options = @('default')                  }
+        @{ name = 'DistinguishedName';                                                                           }
+        @{ name = 'DumpsterServersNotAvailable';                                                                 }
+        @{ name = 'DumpsterStatistics';                                                                          }
+        @{ name = 'EdbFilePath';                                                                                 }
+        @{ name = 'EventHistoryRetentionPeriod';                                                                 }
+        @{ name = 'ExchangeLegacyDN';                                                                            }
+        @{ name = 'ExchangeVersion';                                     options = @('default')                  }
+        @{ name = 'Guid';                                                                                        }
+        @{ name = 'Id';                                                  options = @('default')                  }
+        @{ name = 'Identity';                                            options = @('default', 'key')           }
+        @{ name = 'IndexEnabled';                                                                                }
+        @{ name = 'InvalidDatabaseCopies';                                                                       }
+        @{ name = 'IsExcludedFromInitialProvisioning';                                                           }
+        @{ name = 'IsExcludedFromProvisioning';                                                                  }
+        @{ name = 'IsExcludedFromProvisioningBy';                                                                }
+        @{ name = 'IsExcludedFromProvisioningByOperator';                                                        }
+        @{ name = 'IsExcludedFromProvisioningBySchemaVersionMonitoring';                                         }
+        @{ name = 'IsExcludedFromProvisioningBySpaceMonitoring';                                                 }
+        @{ name = 'IsExcludedFromProvisioningDueToLogicalCorruption';                                            }
+        @{ name = 'IsExcludedFromProvisioningForDraining';                                                       }
+        @{ name = 'IsExcludedFromProvisioningReason';                                                            }
+        @{ name = 'IsMailboxDatabase';                                   options = @('default')                  }
+        @{ name = 'IsPublicFolderDatabase';                              options = @('default')                  }
+        @{ name = 'IssueWarningQuota';                                   options = @('default')                  }
+        @{ name = 'IsSuspendedFromProvisioning';                         options = @('default')                  }
+        @{ name = 'IsValid';                                             options = @('default')                  }
+        @{ name = 'JournalRecipient';                                                                            }
+        @{ name = 'LastCopyBackup';                                                                              }
+        @{ name = 'LastDifferentialBackup';                                                                      }
+        @{ name = 'LastFullBackup';                                                                              }
+        @{ name = 'LastIncrementalBackup';                                                                       }
+        @{ name = 'LogBuffers';                                                                                  }
+        @{ name = 'LogCheckpointDepth';                                                                          }
+        @{ name = 'LogFilePrefix';                                                                               }
+        @{ name = 'LogFileSize';                                                                                 }
+        @{ name = 'LogFolderPath';                                                                               }
+        @{ name = 'MailboxLoadBalanceEnabled';                                                                   }
+        @{ name = 'MailboxLoadBalanceMaximumEdbFileSize';                                                        }
+        @{ name = 'MailboxLoadBalanceOverloadedThreshold';                                                       }
+        @{ name = 'MailboxLoadBalanceRelativeLoadCapacity';                                                      }
+        @{ name = 'MailboxLoadBalanceUnderloadedThreshold';                                                      }
+        @{ name = 'MailboxProvisioningAttributes';                                                               }
+        @{ name = 'MailboxRetention';                                                                            }
+        @{ name = 'MaintenanceSchedule';                                                                         }
+        @{ name = 'MasterServerOrAvailabilityGroup';                                                             }
+        @{ name = 'MasterType';                                                                                  }
+        @{ name = 'MaximumBackgroundDatabaseMaintenanceInterval';                                                }
+        @{ name = 'MaximumCursors';                                                                              }
+        @{ name = 'MaximumOpenTables';                                                                           }
+        @{ name = 'MaximumPreReadPages';                                                                         }
+        @{ name = 'MaximumReplayPreReadPages';                                                                   }
+        @{ name = 'MaximumSessions';                                                                             }
+        @{ name = 'MaximumTemporaryTables';                                                                      }
+        @{ name = 'MaximumVersionStorePages';                                                                    }
+        @{ name = 'MCDBAvailableSpace';                                                                          }
+        @{ name = 'MCDBSize';                                                                                    }
+        @{ name = 'MetaCacheDatabaseFilePath';                                                                   }
+        @{ name = 'MetaCacheDatabaseFolderPath';                                                                 }
+        @{ name = 'MetaCacheDatabaseMaxCapacityInBytes';                                                         }
+        @{ name = 'MetaCacheDatabaseMountpointFolderPath';                                                       }
+        @{ name = 'MetaCacheDatabaseRootFolderPath';                                                             }
+        @{ name = 'MetaCacheDatabaseVolumesRootFolderPath';                                                      }
+        @{ name = 'MimimumBackgroundDatabaseMaintenanceInterval';                                                }
+        @{ name = 'MountAtStartup';                                                                              }
+        @{ name = 'Mounted';                                                                                     }
+        @{ name = 'MountedOnServer';                                                                             }
+        @{ name = 'Name';                                                                                        }
+        @{ name = 'ObjectCategory';                                                                              }
+        @{ name = 'ObjectClass';                                                                                 }
+        @{ name = 'ObjectState';                                                                                 }
+        @{ name = 'OfflineAddressBook';                                                                          }
+        @{ name = 'Organization';                                                                                }
+        @{ name = 'OrganizationId';                                                                              }
+        @{ name = 'OriginalDatabase';                                                                            }
+        @{ name = 'OriginatingServer';                                   options = @('default')                  }
+        @{ name = 'PreferredVersionStorePages';                                                                  }
+        @{ name = 'ProhibitSendQuota';                                                                           }
+        @{ name = 'ProhibitSendReceiveQuota';                                                                    }
+        @{ name = 'PSComputerName';                                                                              }
+        @{ name = 'PSShowComputerName';                                                                          }
+        @{ name = 'PublicFolderDatabase';                                                                        }
+        @{ name = 'QuotaNotificationSchedule';                                                                   }
+        @{ name = 'RecoverableItemsQuota';                                                                       }
+        @{ name = 'RecoverableItemsWarningQuota';                                                                }
+        @{ name = 'Recovery';                                                                                    }
+        @{ name = 'ReplayBackgroundDatabaseMaintenance';                                                         }
+        @{ name = 'ReplayBackgroundDatabaseMaintenanceDelay';                                                    }
+        @{ name = 'ReplayCachePriority';                                                                         }
+        @{ name = 'ReplayCheckpointDepth';                                                                       }
+        @{ name = 'ReplayLagTimes';                                                                              }
+        @{ name = 'ReplicationType';                                                                             }
+        @{ name = 'RequestedSchemaVersion';                                                                      }
+        @{ name = 'RetainDeletedItemsUntilBackup';                                                               }
+        @{ name = 'RpcClientAccessServer';                                                                       }
+        @{ name = 'RunspaceId';                                                                                  }
+        @{ name = 'Server';                                                                                      }
+        @{ name = 'ServerName';                                                                                  }
+        @{ name = 'Servers';                                                                                     }
+        @{ name = 'SnapshotLastCopyBackup';                                                                      }
+        @{ name = 'SnapshotLastDifferentialBackup';                                                              }
+        @{ name = 'SnapshotLastFullBackup';                                                                      }
+        @{ name = 'SnapshotLastIncrementalBackup';                                                               }
+        @{ name = 'TemporaryDataFolderPath';                                                                     }
+        @{ name = 'TruncationLagTimes';                                                                          }
+        @{ name = 'WhenChanged';                                                                                 }
+        @{ name = 'WhenChangedUTC';                                                                              }
+        @{ name = 'WhenCreated';                                                                                 }
+        @{ name = 'WhenCreatedUTC';                                                                              }
+        @{ name = 'WorkerProcessId';                                                                             }
     )
 
     MailboxStatistics = @(
-        @{ name = 'AssociatedItemCount';                                                               }
-        @{ name = 'AttachmentTableAvailableSize';                                                      }
-        @{ name = 'AttachmentTableTotalSize';                                                          }
-        @{ name = 'CurrentSchemaVersion';                                                              }
-        @{ name = 'Database';                                                                          }
-        @{ name = 'DatabaseName';                                        default = $true;              }
-        @{ name = 'DatabaseIssueWarningQuota';                                                         }
-        @{ name = 'DatabaseProhibitSendQuota';                                                         }
-        @{ name = 'DatabaseProhibitSendReceiveQuota';                                                  }
-        @{ name = 'DeletedItemCount';                                                                  }
-        @{ name = 'DisconnectDate';                                      default = $true;              }
-        @{ name = 'DisconnectReason';                                    default = $true;              }
-        @{ name = 'DisplayName';                                         default = $true;              }
-        @{ name = 'DumpsterMessagesPerFolderCountReceiveQuota';                                        }
-        @{ name = 'DumpsterMessagesPerFolderCountWarningQuota';                                        }
-        @{ name = 'ExternalDirectoryOrganizationId';                                                   }
-        @{ name = 'FolderHierarchyChildrenCountReceiveQuota';                                          }
-        @{ name = 'FolderHierarchyChildrenCountWarningQuota';                                          }
-        @{ name = 'FolderHierarchyDepthReceiveQuota';                                                  }
-        @{ name = 'FolderHierarchyDepthWarningQuota';                                                  }
-        @{ name = 'FoldersCountReceiveQuota';                                                          }
-        @{ name = 'FoldersCountWarningQuota';                                                          }
-        @{ name = 'Identity';                                            default = $true; key = $true; }
-        @{ name = 'IsArchiveMailbox';                                    default = $true;              }
-        @{ name = 'IsDatabaseCopyActive';                                                              }
-        @{ name = 'IsMoveDestination';                                                                 }
-        @{ name = 'IsQuarantined';                                       default = $true;              }
-        @{ name = 'IsValid';                                                                           }
-        @{ name = 'ItemCount';                                                                         }
-        @{ name = 'LastLoggedOnUserAccount';                             default = $true;              }
-        @{ name = 'LastLogoffTime';                                                                    }
-        @{ name = 'LastLogonTime';                                       default = $true;              }
-        @{ name = 'LegacyDN';                                            default = $true;              }
-        @{ name = 'MailboxGuid';                                         default = $true;              }
-        @{ name = 'MailboxMessagesPerFolderCountReceiveQuota';                                         }
-        @{ name = 'MailboxMessagesPerFolderCountWarningQuota';                                         }
-        @{ name = 'MailboxTableIdentifier';                                                            }
-        @{ name = 'MailboxType';                                                                       }
-        @{ name = 'MapiIdentity';                                                                      }
-        @{ name = 'MessageTableAvailableSize';                                                         }
-        @{ name = 'MessageTableTotalSize';                                                             }
-        @{ name = 'MoveHistory';                                                                       }
-        @{ name = 'NamedPropertiesCountQuota';                                                         }
-        @{ name = 'ObjectClass';                                                                       }
-        @{ name = 'ObjectState';                                                                       }
-        @{ name = 'OriginatingServer';                                                                 }
-        @{ name = 'OtherTablesAvailableSize';                                                          }
-        @{ name = 'OtherTablesTotalSize';                                                              }
-        @{ name = 'PSComputerName';                                                                    }
-        @{ name = 'PSShowComputerName';                                                                }
-        @{ name = 'QuarantineDescription';                                                             }
-        @{ name = 'QuarantineEnd';                                                                     }
-        @{ name = 'QuarantineFileVersion';                                                             }
-        @{ name = 'QuarantineLastCrash';                                                               }
-        @{ name = 'RunspaceId';                                                                        }
-        @{ name = 'ServerName';                                                                        }
-        @{ name = 'StorageLimitStatus';                                                                }
-        @{ name = 'TotalDeletedItemSize';                                                              }
-        @{ name = 'TotalItemSize';                                       default = $true;              }
+        @{ name = 'AssociatedItemCount';                                                                         }
+        @{ name = 'AttachmentTableAvailableSize';                                                                }
+        @{ name = 'AttachmentTableTotalSize';                                                                    }
+        @{ name = 'CurrentSchemaVersion';                                                                        }
+        @{ name = 'Database';                                                                                    }
+        @{ name = 'DatabaseName';                                        options = @('default')                  }
+        @{ name = 'DatabaseIssueWarningQuota';                                                                   }
+        @{ name = 'DatabaseProhibitSendQuota';                                                                   }
+        @{ name = 'DatabaseProhibitSendReceiveQuota';                                                            }
+        @{ name = 'DeletedItemCount';                                                                            }
+        @{ name = 'DisconnectDate';                                      options = @('default')                  }
+        @{ name = 'DisconnectReason';                                    options = @('default')                  }
+        @{ name = 'DisplayName';                                         options = @('default')                  }
+        @{ name = 'DumpsterMessagesPerFolderCountReceiveQuota';                                                  }
+        @{ name = 'DumpsterMessagesPerFolderCountWarningQuota';                                                  }
+        @{ name = 'ExternalDirectoryOrganizationId';                                                             }
+        @{ name = 'FolderHierarchyChildrenCountReceiveQuota';                                                    }
+        @{ name = 'FolderHierarchyChildrenCountWarningQuota';                                                    }
+        @{ name = 'FolderHierarchyDepthReceiveQuota';                                                            }
+        @{ name = 'FolderHierarchyDepthWarningQuota';                                                            }
+        @{ name = 'FoldersCountReceiveQuota';                                                                    }
+        @{ name = 'FoldersCountWarningQuota';                                                                    }
+        @{ name = 'Identity';                                            options = @('default', 'key')           }
+        @{ name = 'IsArchiveMailbox';                                    options = @('default')                  }
+        @{ name = 'IsDatabaseCopyActive';                                                                        }
+        @{ name = 'IsMoveDestination';                                                                           }
+        @{ name = 'IsQuarantined';                                       options = @('default')                  }
+        @{ name = 'IsValid';                                                                                     }
+        @{ name = 'ItemCount';                                                                                   }
+        @{ name = 'LastLoggedOnUserAccount';                             options = @('default')                  }
+        @{ name = 'LastLogoffTime';                                                                              }
+        @{ name = 'LastLogonTime';                                       options = @('default')                  }
+        @{ name = 'LegacyDN';                                            options = @('default')                  }
+        @{ name = 'MailboxGuid';                                         options = @('default')                  }
+        @{ name = 'MailboxMessagesPerFolderCountReceiveQuota';                                                   }
+        @{ name = 'MailboxMessagesPerFolderCountWarningQuota';                                                   }
+        @{ name = 'MailboxTableIdentifier';                                                                      }
+        @{ name = 'MailboxType';                                                                                 }
+        @{ name = 'MapiIdentity';                                                                                }
+        @{ name = 'MessageTableAvailableSize';                                                                   }
+        @{ name = 'MessageTableTotalSize';                                                                       }
+        @{ name = 'MoveHistory';                                                                                 }
+        @{ name = 'NamedPropertiesCountQuota';                                                                   }
+        @{ name = 'ObjectClass';                                                                                 }
+        @{ name = 'ObjectState';                                                                                 }
+        @{ name = 'OriginatingServer';                                                                           }
+        @{ name = 'OtherTablesAvailableSize';                                                                    }
+        @{ name = 'OtherTablesTotalSize';                                                                        }
+        @{ name = 'PSComputerName';                                                                              }
+        @{ name = 'PSShowComputerName';                                                                          }
+        @{ name = 'QuarantineDescription';                                                                       }
+        @{ name = 'QuarantineEnd';                                                                               }
+        @{ name = 'QuarantineFileVersion';                                                                       }
+        @{ name = 'QuarantineLastCrash';                                                                         }
+        @{ name = 'RunspaceId';                                                                                  }
+        @{ name = 'ServerName';                                                                                  }
+        @{ name = 'StorageLimitStatus';                                                                          }
+        @{ name = 'TotalDeletedItemSize';                                                                        }
+        @{ name = 'TotalItemSize';                                       options = @('default')                  }
     )
 
     RemoteMailbox = @(
-        @{ name = 'AcceptMessagesOnlyFrom';                              set = $true;                                  }
-        @{ name = 'AcceptMessagesOnlyFromDLMembers';                     set = $true;                                  }
-        @{ name = 'AcceptMessagesOnlyFromSendersOrMembers';              set = $true;                                  }
-        @{ name = 'AccountDisabled';                                                                                   }
-        @{ name = 'AddressListMembership';                                                                             }
-        @{ name = 'AggregatedMailboxGuids';                                                                            }
-        @{ name = 'Alias';                                               default = $true; enable = $true; set = $true; }
-        @{ name = 'ArbitrationMailbox';                                                                                }
-        @{ name = 'ArchiveDatabase';                                                                                   }
-        @{ name = 'ArchiveGuid';                                         set = $true;                                  }
-        @{ name = 'ArchiveName';                                         default = $true; enable = $true; set = $true; }
-        @{ name = 'ArchiveQuota';                                                                                      }
-        @{ name = 'ArchiveRelease';                                                                                    }
-        @{ name = 'ArchiveState';                                                                                      }
-        @{ name = 'ArchiveStatus';                                                                                     }
-        @{ name = 'ArchiveWarningQuota';                                                                               }
-        @{ name = 'BypassModerationFromSendersOrMembers';                set = $true;                                  }
-        @{ name = 'CalendarVersionStoreDisabled';                                                                      }
-        @{ name = 'CustomAttribute1';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute2';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute3';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute4';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute5';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute6';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute7';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute8';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute9';                                    set = $true;                                  }
-        @{ name = 'CustomAttribute10';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute11';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute12';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute13';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute14';                                   set = $true;                                  }
-        @{ name = 'CustomAttribute15';                                   set = $true;                                  }
-        @{ name = 'DeliverToMailboxAndForward';                                                                        }
-        @{ name = 'DisabledArchiveDatabase';                                                                           }
-        @{ name = 'DisabledArchiveGuid';                                                                               }
-        @{ name = 'DisplayName';                                         enable = $true; set = $true;                  }
-        @{ name = 'DistinguishedName';                                   default = $true;                              }
-        @{ name = 'EmailAddresses';                                      set = $true;                                  }
-        @{ name = 'EmailAddressPolicyEnabled';                           set = $true;                                  }
-        @{ name = 'EndDateForRetentionHold';                                                                           }
-        @{ name = 'ExchangeGuid';                                        set = $true;                                  }
-        @{ name = 'ExchangeVersion';                                                                                   }
-        @{ name = 'ExchangeUserAccountControl';                                                                        }
-        @{ name = 'ExtensionCustomAttribute1';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute2';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute3';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute4';                           set = $true;                                  }
-        @{ name = 'ExtensionCustomAttribute5';                           set = $true;                                  }
-        @{ name = 'Extensions';                                                                                        }
-        @{ name = 'ExternalDirectoryObjectId';                                                                         }
-        @{ name = 'ForwardingAddress';                                                                                 }
-        @{ name = 'GrantSendOnBehalfTo';                                 set = $true;                                  }
-        @{ name = 'Guid';                                                default = $true; key = $true;                 }
-        @{ name = 'HasPicture';                                                                                        }
-        @{ name = 'HasSpokenName';                                                                                     }
-        @{ name = 'HiddenFromAddressListsEnabled';                       set = $true;                                  }
-        @{ name = 'Id';                                                  default = $true;                              }
-        @{ name = 'Identity';                                                                                          }
-        @{ name = 'ImmutableId';                                         set = $true;                                  }
-        @{ name = 'InPlaceHolds';                                                                                      }
-        @{ name = 'IsSoftDeletedByDisable';                                                                            }
-        @{ name = 'IsSoftDeletedByRemove';                                                                             }
-        @{ name = 'IsValid';                                                                                           }
-        @{ name = 'JournalArchiveAddress';                                                                             }
-        @{ name = 'LastExchangeChangedTime';                                                                           }
-        @{ name = 'LegacyExchangeDN';                                                                                  }
-        @{ name = 'LitigationHoldDate';                                                                                }
-        @{ name = 'LitigationHoldEnabled';                                                                             }
-        @{ name = 'LitigationHoldOwner';                                                                               }
-        @{ name = 'MailboxContainerGuid';                                                                              }
-        @{ name = 'MailboxLocations';                                                                                  }
-        @{ name = 'MailboxMoveBatchName';                                                                              }
-        @{ name = 'MailboxMoveFlags';                                                                                  }
-        @{ name = 'MailboxMoveRemoteHostName';                                                                         }
-        @{ name = 'MailboxMoveSourceMDB';                                                                              }
-        @{ name = 'MailboxMoveStatus';                                                                                 }
-        @{ name = 'MailboxMoveTargetMDB';                                                                              }
-        @{ name = 'MailboxProvisioningConstraint';                                                                     }
-        @{ name = 'MailboxProvisioningPreferences';                                                                    }
-        @{ name = 'MailboxRelease';                                                                                    }
-        @{ name = 'MailTip';                                             set = $true;                                  }
-        @{ name = 'MailTipTranslations';                                 set = $true;                                  }
-        @{ name = 'MaxReceiveSize';                                                                                    }
-        @{ name = 'MaxSendSize';                                                                                       }
-        @{ name = 'ModeratedBy';                                         set = $true;                                  }
-        @{ name = 'ModerationEnabled';                                   set = $true;                                  }
-        @{ name = 'Name';                                                default = $true; set = $true;                 }
-        @{ name = 'ObjectCategory';                                                                                    }
-        @{ name = 'ObjectClass';                                                                                       }
-        @{ name = 'ObjectState';                                                                                       }
-        @{ name = 'OnPremisesOrganizationalUnit';                                                                      }
-        @{ name = 'OrganizationId';                                                                                    }
-        @{ name = 'OriginatingServer';                                                                                 }
-        @{ name = 'PersistedCapabilities';                                                                             }
-        @{ name = 'PoliciesExcluded';                                                                                  }
-        @{ name = 'PoliciesIncluded';                                                                                  }
-        @{ name = 'ProtocolSettings';                                                                                  }
-        @{ name = 'PrimarySmtpAddress';                                  default = $true; enable = $true; set = $true; }
-        @{ name = 'PSComputerName';                                                                                    }
-        @{ name = 'PSShowComputerName';                                                                                }
-        @{ name = 'RecipientLimits';                                                                                   }
-        @{ name = 'RecipientType';                                                                                     }
-        @{ name = 'RecipientTypeDetails';                                                                              }
-        @{ name = 'RecoverableItemsQuota';                               set = $true;                                  }
-        @{ name = 'RecoverableItemsWarningQuota';                        set = $true;                                  }
-        @{ name = 'RejectMessagesFrom';                                  set = $true;                                  }
-        @{ name = 'RejectMessagesFromDLMembers';                         set = $true;                                  }
-        @{ name = 'RejectMessagesFromSendersOrMembers';                  set = $true;                                  }
-        @{ name = 'RemoteRecipientType';                                                                               }
-        @{ name = 'RemoteRoutingAddress';                                default = $true; enable = $true; set = $true; }
-        @{ name = 'RequireSenderAuthenticationEnabled';                  set = $true;                                  }
-        @{ name = 'ResetPasswordOnNextLogon';                            set = $true;                                  }
-        @{ name = 'RetainDeletedItemsFor';                                                                             }
-        @{ name = 'RetentionComment';                                                                                  }
-        @{ name = 'RetentionHoldEnabled';                                                                              }
-        @{ name = 'RetentionUrl';                                                                                      }
-        @{ name = 'RunspaceId';                                                                                        }
-        @{ name = 'SamAccountName';                                      set = $true;                                  }
-        @{ name = 'SendModerationNotifications';                         set = $true;                                  }
-        @{ name = 'SimpleDisplayName';                                                                                 }
-        @{ name = 'SingleItemRecoveryEnabled';                                                                         }
-        @{ name = 'StartDateForRetentionHold';                                                                         }
-        @{ name = 'StsRefreshTokensValidFrom';                                                                         }
-        @{ name = 'UMDtmfMap';                                                                                         }
-        @{ name = 'UserCertificate';                                                                                   }
-        @{ name = 'UserPrincipalName';                                   set = $true;                                  }
-        @{ name = 'UserSMimeCertificate';                                                                              }
-        @{ name = 'WhenChanged';                                                                                       }
-        @{ name = 'WhenChangedUTC';                                                                                    }
-        @{ name = 'WhenCreated';                                                                                       }
-        @{ name = 'WhenCreatedUTC';                                                                                    }
-        @{ name = 'WhenMailboxCreated';                                                                                }
-        @{ name = 'WhenSoftDeleted';                                                                                   }
-        @{ name = 'WindowsEmailAddress';                                 set = $true;                                  }
+        @{ name = 'AcceptMessagesOnlyFrom';                              options = @('set')                      }
+        @{ name = 'AcceptMessagesOnlyFromDLMembers';                     options = @('set')                      }
+        @{ name = 'AcceptMessagesOnlyFromSendersOrMembers';              options = @('set')                      }
+        @{ name = 'AccountDisabled';                                                                             }
+        @{ name = 'AddressListMembership';                                                                       }
+        @{ name = 'AggregatedMailboxGuids';                                                                      }
+        @{ name = 'Alias';                                               options = @('default', 'enable', 'set') }
+        @{ name = 'ArbitrationMailbox';                                                                          }
+        @{ name = 'ArchiveDatabase';                                                                             }
+        @{ name = 'ArchiveGuid';                                         options = @('set')                      }
+        @{ name = 'ArchiveName';                                         options = @('default', 'enable', 'set') }
+        @{ name = 'ArchiveQuota';                                                                                }
+        @{ name = 'ArchiveRelease';                                                                              }
+        @{ name = 'ArchiveState';                                                                                }
+        @{ name = 'ArchiveStatus';                                                                               }
+        @{ name = 'ArchiveWarningQuota';                                                                         }
+        @{ name = 'BypassModerationFromSendersOrMembers';                options = @('set')                      }
+        @{ name = 'CalendarVersionStoreDisabled';                                                                }
+        @{ name = 'CustomAttribute1';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute2';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute3';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute4';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute5';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute6';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute7';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute8';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute9';                                    options = @('set')                      }
+        @{ name = 'CustomAttribute10';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute11';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute12';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute13';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute14';                                   options = @('set')                      }
+        @{ name = 'CustomAttribute15';                                   options = @('set')                      }
+        @{ name = 'DeliverToMailboxAndForward';                                                                  }
+        @{ name = 'DisabledArchiveDatabase';                                                                     }
+        @{ name = 'DisabledArchiveGuid';                                                                         }
+        @{ name = 'DisplayName';                                         options = @('enable', 'set')            }
+        @{ name = 'DistinguishedName';                                   options = @('default')                  }
+        @{ name = 'EmailAddresses';                                      options = @('set')                      }
+        @{ name = 'EmailAddressPolicyEnabled';                           options = @('set')                      }
+        @{ name = 'EndDateForRetentionHold';                                                                     }
+        @{ name = 'ExchangeGuid';                                        options = @('set')                      }
+        @{ name = 'ExchangeVersion';                                                                             }
+        @{ name = 'ExchangeUserAccountControl';                                                                  }
+        @{ name = 'ExtensionCustomAttribute1';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute2';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute3';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute4';                           options = @('set')                      }
+        @{ name = 'ExtensionCustomAttribute5';                           options = @('set')                      }
+        @{ name = 'Extensions';                                                                                  }
+        @{ name = 'ExternalDirectoryObjectId';                                                                   }
+        @{ name = 'ForwardingAddress';                                                                           }
+        @{ name = 'GrantSendOnBehalfTo';                                 options = @('set')                      }
+        @{ name = 'Guid';                                                options = @('default', 'key')           }
+        @{ name = 'HasPicture';                                                                                  }
+        @{ name = 'HasSpokenName';                                                                               }
+        @{ name = 'HiddenFromAddressListsEnabled';                       options = @('set')                      }
+        @{ name = 'Id';                                                  options = @('default')                  }
+        @{ name = 'Identity';                                                                                    }
+        @{ name = 'ImmutableId';                                         options = @('set')                      }
+        @{ name = 'InPlaceHolds';                                                                                }
+        @{ name = 'IsSoftDeletedByDisable';                                                                      }
+        @{ name = 'IsSoftDeletedByRemove';                                                                       }
+        @{ name = 'IsValid';                                                                                     }
+        @{ name = 'JournalArchiveAddress';                                                                       }
+        @{ name = 'LastExchangeChangedTime';                                                                     }
+        @{ name = 'LegacyExchangeDN';                                                                            }
+        @{ name = 'LitigationHoldDate';                                                                          }
+        @{ name = 'LitigationHoldEnabled';                                                                       }
+        @{ name = 'LitigationHoldOwner';                                                                         }
+        @{ name = 'MailboxContainerGuid';                                                                        }
+        @{ name = 'MailboxLocations';                                                                            }
+        @{ name = 'MailboxMoveBatchName';                                                                        }
+        @{ name = 'MailboxMoveFlags';                                                                            }
+        @{ name = 'MailboxMoveRemoteHostName';                                                                   }
+        @{ name = 'MailboxMoveSourceMDB';                                                                        }
+        @{ name = 'MailboxMoveStatus';                                                                           }
+        @{ name = 'MailboxMoveTargetMDB';                                                                        }
+        @{ name = 'MailboxProvisioningConstraint';                                                               }
+        @{ name = 'MailboxProvisioningPreferences';                                                              }
+        @{ name = 'MailboxRelease';                                                                              }
+        @{ name = 'MailTip';                                             options = @('set')                      }
+        @{ name = 'MailTipTranslations';                                 options = @('set')                      }
+        @{ name = 'MaxReceiveSize';                                                                              }
+        @{ name = 'MaxSendSize';                                                                                 }
+        @{ name = 'ModeratedBy';                                         options = @('set')                      }
+        @{ name = 'ModerationEnabled';                                   options = @('set')                      }
+        @{ name = 'Name';                                                options = @('default', 'set')           }
+        @{ name = 'ObjectCategory';                                                                              }
+        @{ name = 'ObjectClass';                                                                                 }
+        @{ name = 'ObjectState';                                                                                 }
+        @{ name = 'OnPremisesOrganizationalUnit';                                                                }
+        @{ name = 'OrganizationId';                                                                              }
+        @{ name = 'OriginatingServer';                                                                           }
+        @{ name = 'PersistedCapabilities';                                                                       }
+        @{ name = 'PoliciesExcluded';                                                                            }
+        @{ name = 'PoliciesIncluded';                                                                            }
+        @{ name = 'ProtocolSettings';                                                                            }
+        @{ name = 'PrimarySmtpAddress';                                  options = @('default', 'enable', 'set') }
+        @{ name = 'PSComputerName';                                                                              }
+        @{ name = 'PSShowComputerName';                                                                          }
+        @{ name = 'RecipientLimits';                                                                             }
+        @{ name = 'RecipientType';                                                                               }
+        @{ name = 'RecipientTypeDetails';                                                                        }
+        @{ name = 'RecoverableItemsQuota';                               options = @('set')                      }
+        @{ name = 'RecoverableItemsWarningQuota';                        options = @('set')                      }
+        @{ name = 'RejectMessagesFrom';                                  options = @('set')                      }
+        @{ name = 'RejectMessagesFromDLMembers';                         options = @('set')                      }
+        @{ name = 'RejectMessagesFromSendersOrMembers';                  options = @('set')                      }
+        @{ name = 'RemoteRecipientType';                                                                         }
+        @{ name = 'RemoteRoutingAddress';                                options = @('default', 'enable', 'set') }
+        @{ name = 'RequireSenderAuthenticationEnabled';                  options = @('set')                      }
+        @{ name = 'ResetPasswordOnNextLogon';                            options = @('set')                      }
+        @{ name = 'RetainDeletedItemsFor';                                                                       }
+        @{ name = 'RetentionComment';                                                                            }
+        @{ name = 'RetentionHoldEnabled';                                                                        }
+        @{ name = 'RetentionUrl';                                                                                }
+        @{ name = 'RunspaceId';                                                                                  }
+        @{ name = 'SamAccountName';                                      options = @('set')                      }
+        @{ name = 'SendModerationNotifications';                         options = @('set')                      }
+        @{ name = 'SimpleDisplayName';                                                                           }
+        @{ name = 'SingleItemRecoveryEnabled';                                                                   }
+        @{ name = 'StartDateForRetentionHold';                                                                   }
+        @{ name = 'StsRefreshTokensValidFrom';                                                                   }
+        @{ name = 'UMDtmfMap';                                                                                   }
+        @{ name = 'UserCertificate';                                                                             }
+        @{ name = 'UserPrincipalName';                                   options = @('set')                      }
+        @{ name = 'UserSMimeCertificate';                                                                        }
+        @{ name = 'WhenChanged';                                                                                 }
+        @{ name = 'WhenChangedUTC';                                                                              }
+        @{ name = 'WhenCreated';                                                                                 }
+        @{ name = 'WhenCreatedUTC';                                                                              }
+        @{ name = 'WhenMailboxCreated';                                                                          }
+        @{ name = 'WhenSoftDeleted';                                                                             }
+        @{ name = 'WindowsEmailAddress';                                 options = @('set')                      }
     )
 }
 
 
 # Default properties and IDM properties are the same
-foreach ($key in $Properties.Keys) {
-    for ($i = 0; $i -lt $Properties.$key.Count; $i++) {
-        if ($Properties.$key[$i].default) {
-            $Properties.$key[$i].idm = $true
-        }
+foreach ($class in $Properties.Keys) {
+    foreach ($e in $Properties.$class) {
+        if (!$e.options) { $e.options = @() }
+        if ($e.options.Contains('default')) { $e.options += 'idm' }
     }
 }
 
@@ -907,11 +906,11 @@ function Idm-CASMailboxesRead {
         $properties = $function_params.properties
 
         if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.CASMailbox | Where-Object { $_.default }).name
+            $properties = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('default') }).name
         }
 
         # Assure key is the first column
-        $key = ($Global:Properties.CASMailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('key') }).name
         $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
         try {
@@ -953,9 +952,9 @@ function Idm-CASMailboxSet {
         @{
             semantics = 'update'
             parameters = @(
-                @{ name = ($Global:Properties.CASMailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.CASMailbox | Where-Object { !$_.key -and !$_.set } | ForEach-Object {
+                $Global:Properties.CASMailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('set') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -973,7 +972,7 @@ function Idm-CASMailboxSet {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.CASMailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1029,9 +1028,9 @@ function Idm-MailboxEnable {
         @{
             semantics = 'create'
             parameters = @(
-                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.Mailbox | Where-Object { !$_.key -and !$_.enable } | ForEach-Object {
+                $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('enable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1049,7 +1048,7 @@ function Idm-MailboxEnable {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1129,11 +1128,11 @@ function Idm-MailboxesRead {
         $properties = $function_params.properties
 
         if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.Mailbox | Where-Object { $_.default }).name
+            $properties = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('default') }).name
         }
 
         # Assure key is the first column
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
         $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
         try {
@@ -1175,9 +1174,9 @@ function Idm-MailboxSet {
         @{
             semantics = 'update'
             parameters = @(
-                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.Mailbox | Where-Object { !$_.key -and !$_.set } | ForEach-Object {
+                $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('set') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1195,7 +1194,7 @@ function Idm-MailboxSet {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1251,9 +1250,9 @@ function Idm-MailboxDisable {
         @{
             semantics = 'create'
             parameters = @(
-                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.Mailbox | Where-Object { !$_.key -and !$_.disable } | ForEach-Object {
+                $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('disable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1271,7 +1270,7 @@ function Idm-MailboxDisable {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1346,11 +1345,11 @@ function Idm-MailboxDatabasesRead {
         $properties = $function_params.properties
 
         if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.MailboxDatabase | Where-Object { $_.default }).name
+            $properties = ($Global:Properties.MailboxDatabase | Where-Object { $_.options.Contains('default') }).name
         }
 
         # Assure key is the first column
-        $key = ($Global:Properties.MailboxDatabase | Where-Object { $_.key }).name
+        $key = ($Global:Properties.MailboxDatabase | Where-Object { $_.options.Contains('key') }).name
         $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
         try {
@@ -1392,9 +1391,9 @@ function Idm-MailboxPermissionAdd {
         @{
             semantics = 'create'
             parameters = @(
-                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.Mailbox | Where-Object { !$_.key -and !$_.permissionAdd } | ForEach-Object {
+                $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('permissionAdd') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1412,7 +1411,7 @@ function Idm-MailboxPermissionAdd {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1468,9 +1467,9 @@ function Idm-MailboxPermissionRemove {
         @{
             semantics = 'delete'
             parameters = @(
-                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.Mailbox | Where-Object { !$_.key -and !$_.permissionRemove } | ForEach-Object {
+                $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('permissionRemove') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1488,7 +1487,7 @@ function Idm-MailboxPermissionRemove {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1571,11 +1570,11 @@ function Idm-MailboxStatisticsRead {
         $properties = $function_params.properties
 
         if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.MailboxStatistics | Where-Object { $_.default }).name
+            $properties = ($Global:Properties.MailboxStatistics | Where-Object { $_.options.Contains('default') }).name
         }
 
         # Assure key is the first column
-        $key = ($Global:Properties.MailboxStatistics | Where-Object { $_.key }).name
+        $key = ($Global:Properties.MailboxStatistics | Where-Object { $_.options.Contains('key') }).name
         $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
         try {
@@ -1617,9 +1616,9 @@ function Idm-RemoteMailboxEnable {
         @{
             semantics = 'create'
             parameters = @(
-                @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.RemoteMailbox | Where-Object { !$_.key -and !$_.enable } | ForEach-Object {
+                $Global:Properties.RemoteMailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('enable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1637,7 +1636,7 @@ function Idm-RemoteMailboxEnable {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1713,11 +1712,11 @@ function Idm-RemoteMailboxesRead {
         $properties = $function_params.properties
 
         if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.RemoteMailbox | Where-Object { $_.default }).name
+            $properties = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('default') }).name
         }
 
         # Assure key is the first column
-        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name
         $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
         try {
@@ -1759,9 +1758,9 @@ function Idm-RemoteMailboxSet {
         @{
             semantics = 'update'
             parameters = @(
-                @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.RemoteMailbox | Where-Object { !$_.key -and !$_.set } | ForEach-Object {
+                $Global:Properties.RemoteMailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('set') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1779,7 +1778,7 @@ function Idm-RemoteMailboxSet {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -1835,9 +1834,9 @@ function Idm-RemoteMailboxDisable {
         @{
             semantics = 'create'
             parameters = @(
-                @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name; allowance = 'mandatory' }
+                @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
-                $Global:Properties.RemoteMailbox | Where-Object { !$_.key -and !$_.disable } | ForEach-Object {
+                $Global:Properties.RemoteMailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('disable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
@@ -1855,7 +1854,7 @@ function Idm-RemoteMailboxDisable {
 
         Open-MsExchangeSession $system_params
 
-        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.key }).name
+        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name
 
         $call_params = @{
             Identity = $function_params.$key
@@ -2018,14 +2017,14 @@ function Get-ClassMetaData {
                     @{
                         name = $_.name
                         usage_hint = @( @(
-                            foreach ($key in $_.Keys) {
-                                if ($key -notin @('default', 'idm', 'key')) { continue }
+                            foreach ($opt in $_.options) {
+                                if ($opt -notin @('default', 'idm', 'key')) { continue }
 
-                                if ($key -eq 'idm') {
-                                    $key.Toupper()
+                                if ($opt -eq 'idm') {
+                                    $opt.Toupper()
                                 }
                                 else {
-                                    $key.Substring(0,1).Toupper() + $key.Substring(1)
+                                    $opt.Substring(0,1).Toupper() + $opt.Substring(1)
                                 }
                             }
                         ) | Sort-Object) -join ' | '
@@ -2048,7 +2047,7 @@ function Get-ClassMetaData {
                     )
                 }
             }
-            value = ($Global:Properties.$Class | Where-Object { $_.default }).name
+            value = ($Global:Properties.$Class | Where-Object { $_.options.Contains('default') }).name
         }
     )
 }
