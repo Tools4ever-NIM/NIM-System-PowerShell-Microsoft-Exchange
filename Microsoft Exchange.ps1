@@ -1404,7 +1404,7 @@ function Idm-MailboxDisable {
         #
 
         @{
-            semantics = 'create'
+            semantics = 'delete'
             parameters = @(
                 @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
@@ -1988,7 +1988,7 @@ function Idm-RemoteMailboxDisable {
         #
 
         @{
-            semantics = 'create'
+            semantics = 'delete'
             parameters = @(
                 @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
@@ -2262,7 +2262,7 @@ function Idm-MailUserDisable {
         #
 
         @{
-            semantics = 'create'
+            semantics = 'delete'
             parameters = @(
                 @{ name = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
