@@ -1,4 +1,3 @@
-# version 2.0.1473 
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
