@@ -1,3 +1,4 @@
+# version 2.0.1473 
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -33,14 +34,14 @@ function Idm-SystemInfo {
                 name = 'server'
                 type = 'textbox'
                 label = 'Server'
-                description = 'Name of Exchange server'
+                tooltip = 'Name of Exchange server'
                 value = 'ps.outlook.com'
             }
             @{
                 name = 'use_secure_connection'
                 type = 'checkbox'
                 label = 'Use secure connection'
-                description = 'Using http or https'
+                tooltip = 'Using http or https'
                 value = $false
             }
             @{
@@ -48,7 +49,7 @@ function Idm-SystemInfo {
                 type = 'checkgroup'
                 label = 'Skip certificate checks'
                 label_indent = $true
-                description = 'Skip the following certificate checks'
+                tooltip = 'Skip the following certificate checks'
                 table = @{
                     rows = @(
                         @{ id = 'SkipCACheck';         display_text = 'Certificate signed by trusted certification authority (CA)' }
@@ -67,7 +68,7 @@ function Idm-SystemInfo {
                 name = 'use_proxy_server'
                 type = 'checkbox'
                 label = 'Use proxy server'
-                description = 'Behind a proxy server?'
+                tooltip = 'Behind a proxy server?'
                 value = $false
             }
             @{
@@ -75,7 +76,7 @@ function Idm-SystemInfo {
                 type = 'combo'
                 label = 'Proxy access type'
                 label_indent = $true
-                description = 'Proxy access type'
+                tooltip = 'Proxy access type'
                 table = @{
                     rows = @(
                         @{ id = 'AutoDetect';    display_text = 'AutoDetect' }
@@ -94,7 +95,7 @@ function Idm-SystemInfo {
                 name = 'authentication'
                 type = 'combo'
                 label = 'Authentication'
-                description = 'Authentication method'
+                tooltip = 'Authentication method'
                 table = @{
                     rows = @(
                         @{ id = 'Default';                         display_text = 'Default' }
@@ -123,7 +124,7 @@ function Idm-SystemInfo {
                 type = 'textbox'
                 label = 'Username'
                 label_indent = $true
-                description = 'User account name to access exchange'
+                tooltip = 'User account name to access exchange'
                 value = ''
                 hidden = 'use_svc_account_creds'
             }
@@ -133,7 +134,7 @@ function Idm-SystemInfo {
                 password = $true
                 label = 'Password'
                 label_indent = $true
-                description = 'User account password to access exchange'
+                tooltip = 'User account password to access exchange'
                 value = ''
                 hidden = 'use_svc_account_creds'
             }
@@ -141,14 +142,13 @@ function Idm-SystemInfo {
                 name = 'nr_of_sessions'
                 type = 'textbox'
                 label = 'Max. number of simultaneous sessions'
-                description = ''
                 value = 1
             }
             @{
                 name = 'sessions_idle_timeout'
                 type = 'textbox'
                 label = 'Session cleanup idle time (minutes)'
-                description = ''
+                tooltip = '0 disables session cleanup'
                 value = 10
             }
         )
@@ -166,7 +166,7 @@ function Idm-SystemInfo {
                 name = 'organizational_unit'
                 type = 'combo'
                 label = 'Organizational unit'
-                description = 'Organization Unit to start searching on; empty or * searches all'
+                tooltip = 'Organization Unit to start searching on; empty or * searches all'
                 table = @{
                     rows = @( @{ display = '*'; value = '*' } ) + @( Get-MsExchangeOrganizationalUnit | Sort-Object -Property 'canonicalName' | ForEach-Object { @{ display = $_.canonicalName; value = $_.distinguishedName } } )
                     settings_combo = @{
@@ -180,7 +180,7 @@ function Idm-SystemInfo {
                 name = 'domain_controller'
                 type = 'textbox'
                 label = 'Domain controller'
-                description = 'Name of Domain Controller to target'
+                tooltip = 'Name of Domain Controller to target'
                 value = ''
             }
         )
@@ -851,162 +851,6 @@ $Properties = @{
         @{ name = 'WhenSoftDeleted';                                                                             }
         @{ name = 'WindowsEmailAddress';                                 options = @('set')                      }
     )
-
-    MailUser = @(
-        @{ name = 'AcceptMessagesOnlyFrom';                          options = @('set')                      }
-        @{ name = 'AcceptMessagesOnlyFromDLMembers';                          options = @('set')                      }
-        @{ name = 'AcceptMessagesOnlyFromSendersOrMembers';                          options = @('set')                      }
-        @{ name = 'AccountDisabled';             }
-        @{ name = 'AddressListMembership';        }
-        @{ name = 'AdministrativeUnits';           }
-        @{ name = 'AggregatedMailboxGuids';         options = @('set')                      }
-        @{ name = 'Alias';                          options = @('default','set','enable')                      }
-        @{ name = 'ArbitrationMailbox';                          options = @('set')                      }
-        @{ name = 'ArchiveDatabase';                }
-        @{ name = 'ArchiveGuid';                                               }
-        @{ name = 'ArchiveName';                          options = @('default','set')                      }
-        @{ name = 'ArchiveQuota';         }
-        @{ name = 'ArchiveRelease';        }
-        @{ name = 'ArchiveStatus';          }
-        @{ name = 'ArchiveWarningQuota';     }
-        @{ name = 'BypassModerationFromSendersOrMembers';                          options = @('set')                      }
-        @{ name = 'CalendarVersionStoreDisabled';           }
-        @{ name = 'ComplianceTagHoldApplied';                }
-        @{ name = 'CustomAttribute1';                          options = @('set')                      }
-        @{ name = 'CustomAttribute10';                          options = @('set')                      }
-        @{ name = 'CustomAttribute11';                          options = @('set')                      }
-        @{ name = 'CustomAttribute12';                          options = @('set')                      }
-        @{ name = 'CustomAttribute13';                          options = @('set')                      }
-        @{ name = 'CustomAttribute14';                          options = @('set')                      }
-        @{ name = 'CustomAttribute15';                          options = @('set')                      }
-        @{ name = 'CustomAttribute2';                          options = @('set')                      }
-        @{ name = 'CustomAttribute3';                          options = @('set')                      }
-        @{ name = 'CustomAttribute4';                          options = @('set')                      }
-        @{ name = 'CustomAttribute5';                          options = @('set')                      }
-        @{ name = 'CustomAttribute6';                          options = @('set')                      }
-        @{ name = 'CustomAttribute7';                          options = @('set')                      }
-        @{ name = 'CustomAttribute8';                          options = @('set')                      }
-        @{ name = 'CustomAttribute9';                          options = @('set')                      }
-        @{ name = 'DataEncryptionPolicy';               }
-        @{ name = 'DelayHoldApplied';                    }
-        @{ name = 'DeliverToMailboxAndForward';           }
-        @{ name = 'DisabledArchiveDatabase';               }
-        @{ name = 'DisabledArchiveGuid';                   }
-        @{ name = 'DisplayName';                          options = @('default','set','enable')                      }
-        @{ name = 'DistinguishedName';                }
-        @{ name = 'EmailAddressPolicyEnabled';                          options = @('set')                      }
-        @{ name = 'EmailAddresses';                          options = @('default','set')                      }
-        @{ name = 'EndDateForRetentionHold';                          options = @('default','set')                      }
-        @{ name = 'ExchangeGuid';                                               }
-        @{ name = 'ExchangeUserAccountControl';         }
-        @{ name = 'ExchangeVersion';                    }
-        @{ name = 'ExtensionCustomAttribute1';                          options = @('set')                      }
-        @{ name = 'ExtensionCustomAttribute2';                          options = @('set')                      }
-        @{ name = 'ExtensionCustomAttribute3';                          options = @('set')                      }
-        @{ name = 'ExtensionCustomAttribute4';                          options = @('set')                      }
-        @{ name = 'ExtensionCustomAttribute5';                          options = @('set')                      }
-        @{ name = 'Extensions';                     }
-        @{ name = 'ExternalDirectoryObjectId';       }
-        @{ name = 'ExternalEmailAddress';                          options = @('default','set','enable')                      }
-        @{ name = 'ForwardingAddress';                }
-        @{ name = 'GrantSendOnBehalfTo';                          options = @('set')                      }
-        @{ name = 'GuestInfo';                      }
-        @{ name = 'Guid';                          options = @('key')                      }
-        @{ name = 'HasPicture';                   }
-        @{ name = 'HasSpokenName';                 }
-        @{ name = 'HiddenFromAddressListsEnabled';                          options = @('set')                      }
-        @{ name = 'Id';                         options = @('default')                      }
-        @{ name = 'Identity';                          }
-        @{ name = 'ImmutableId';                                               options = @('set')                      }
-        @{ name = 'InPlaceHolds';                }
-        @{ name = 'IsDirSynced';                  }
-        @{ name = 'IsSoftDeletedByDisable';        }
-        @{ name = 'IsSoftDeletedByRemove';          }
-        @{ name = 'IsValid';                       }
-        @{ name = 'IssueWarningQuota';              }
-        @{ name = 'JournalArchiveAddress';           }
-        @{ name = 'LastExchangeChangedTime';          }
-        @{ name = 'LegacyExchangeDN';                  }
-        @{ name = 'LitigationHoldDate';                 }
-        @{ name = 'LitigationHoldEnabled';               }
-        @{ name = 'LitigationHoldOwner';       }
-        @{ name = 'MacAttachmentFormat';                          options = @('set','enable')                      }
-        @{ name = 'MailTip';                          options = @('set')                      }
-        @{ name = 'MailTipTranslations';                          options = @('set')                      }
-        @{ name = 'MailboxContainerGuid';       }
-        @{ name = 'MailboxLocations';            }
-        @{ name = 'MailboxMoveBatchName';         }
-        @{ name = 'MailboxMoveFlags';              }
-        @{ name = 'MailboxMoveRemoteHostName';      }
-        @{ name = 'MailboxMoveSourceMDB';            }
-        @{ name = 'MailboxMoveStatus';                }
-        @{ name = 'MailboxMoveTargetMDB';              }
-        @{ name = 'MailboxProvisioningConstraint';      }
-        @{ name = 'MailboxProvisioningPreferences';      }
-        @{ name = 'MailboxRegion';                        }
-        @{ name = 'MailboxRegionLastUpdateTime';           }
-        @{ name = 'MailboxRelease';                     }
-        @{ name = 'MaxReceiveSize';                          options = @('set')                      }
-        @{ name = 'MaxSendSize';                          options = @('set')                      }
-        @{ name = 'MessageBodyFormat';                          options = @('set')                      }
-        @{ name = 'MessageFormat';                          options = @('set','enable')                      }
-        @{ name = 'MicrosoftOnlineServicesID';          }
-        @{ name = 'ModeratedBy';                          options = @('set')                      }
-        @{ name = 'ModerationEnabled';                          options = @('set')                      }
-        @{ name = 'Name';                          options = @('set')                      }
-        @{ name = 'ObjectCategory';               }
-        @{ name = 'ObjectClass';                   }
-        @{ name = 'ObjectState';                    }
-        @{ name = 'OrganizationId';                  }
-        @{ name = 'OrganizationalUnit';               }
-        @{ name = 'OriginatingServer';                 }
-        @{ name = 'OtherMail';                          }
-        @{ name = 'PersistedCapabilities';               }
-        @{ name = 'PoliciesExcluded';                     }
-        @{ name = 'PoliciesIncluded';                      }
-        @{ name = 'PrimarySmtpAddress';                          options = @('default','set','enable')                      }
-        @{ name = 'ProhibitSendQuota';                      }
-        @{ name = 'ProhibitSendReceiveQuota';                }
-        @{ name = 'ProtocolSettings';                        }
-        @{ name = 'RecipientLimits';                          options = @('set')                      }
-        @{ name = 'RecipientType';                 }
-        @{ name = 'RecipientTypeDetails';           }
-        @{ name = 'RecoverableItemsQuota';                          options = @('set')                      }
-        @{ name = 'RecoverableItemsWarningQuota';                          options = @('set')                      }
-        @{ name = 'RejectMessagesFrom';                          options = @('set')                      }
-        @{ name = 'RejectMessagesFromDLMembers';                          options = @('set')                      }
-        @{ name = 'RejectMessagesFromSendersOrMembers';                          options = @('set')                      }
-        @{ name = 'RequireSenderAuthenticationEnabled';                          options = @('set')                      }
-        @{ name = 'ResetPasswordOnNextLogon';     }
-        @{ name = 'RetainDeletedItemsFor';         }
-        @{ name = 'RetentionComment';              }
-        @{ name = 'RetentionHoldEnabled';           }
-        @{ name = 'RetentionUrl';                    }
-        @{ name = 'SKUAssigned';                      }
-        @{ name = 'SamAccountName';                          options = @('default','set')                      }
-        @{ name = 'SeconaryAddress';                          options = @('set')                      }
-        @{ name = 'SendModerationNotifications';                          options = @('set')                      }
-        @{ name = 'SimpleDisplayName';                          options = @('set')                      }
-        @{ name = 'SingleItemRecoveryEnabled'; }
-        @{ name = 'StartDateForRetentionHold';  }
-        @{ name = 'StsRefreshTokensValidFrom';   }
-        @{ name = 'UMDtmfMap';                          options = @('set')                      }
-        @{ name = 'UsageLocation';                }
-        @{ name = 'UseMapiRichTextFormat';                          options = @('set')                      }
-        @{ name = 'UsePreferMessageFormat';                          options = @('set','enable')                      }
-        @{ name = 'UserCertificate';                          options = @('set')                      }
-        @{ name = 'UserPrincipalName';                          options = @('default','set')                      }
-        @{ name = 'UserSMimeCertificate';                          options = @('set')                      }
-        @{ name = 'WhenChanged';                   }
-        @{ name = 'WhenChangedUTC';                 }
-        @{ name = 'WhenCreated';                     }
-        @{ name = 'WhenCreatedUTC';                   }
-        @{ name = 'WhenMailboxCreated';                }
-        @{ name = 'WhenSoftDeleted';                    }
-        @{ name = 'WindowsEmailAddress';                          options = @('set')                      }
-        @{ name = 'WindowsLiveID';                       }
-        
-    )
 }
 
 
@@ -1404,7 +1248,7 @@ function Idm-MailboxDisable {
         #
 
         @{
-            semantics = 'delete'
+            semantics = 'create'
             parameters = @(
                 @{ name = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
@@ -1988,7 +1832,7 @@ function Idm-RemoteMailboxDisable {
         #
 
         @{
-            semantics = 'delete'
+            semantics = 'create'
             parameters = @(
                 @{ name = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
 
@@ -2047,273 +1891,6 @@ function Idm-RemoteMailboxDisable {
     Log info "Done"
 }
 
-function Idm-MailUsersRead {
-    param (
-        # Operations
-        [switch] $GetMeta,
-        # Parameters
-        [string] $SystemParams,
-        [string] $FunctionParams
-    )
-
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
-
-    if ($GetMeta) {
-        #
-        # Get meta data
-        #
-
-        Get-ClassMetaData -SystemParams $SystemParams -Class 'MailUser'
-    }
-    else {
-        #
-        # Execute function
-        #
-
-        $system_params   = ConvertFrom-Json2 $SystemParams
-        $function_params = ConvertFrom-Json2 $FunctionParams
-
-        Open-MsExchangeSession $system_params
-
-        $call_params = @{
-            ResultSize = 'Unlimited'
-        }
-
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
-
-        $properties = $function_params.properties
-
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('default') }).name
-        }
-        
-        # Assure key is the first column
-        $key = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
-        
-        try {
-            LogIO info "Get-MsExchangeMailUser" -In @call_params
-            Get-MsExchangeMailUser @call_params | Select-Object $properties
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
-        }
-    }
-
-    Log info "Done"
-}
-
-function Idm-MailUserSet {
-    param (
-        # Operations
-        [switch] $GetMeta,
-        # Parameters
-        [string] $SystemParams,
-        [string] $FunctionParams
-    )
-
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
-
-    if ($GetMeta) {
-        #
-        # Get meta data
-        #
-
-        @{
-            semantics = 'update'
-            parameters = @(
-                @{ name = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
-
-                $Global:Properties.MailUser | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('set') } | ForEach-Object {
-                    @{ name = $_.name; allowance = 'prohibited' }
-                }
-
-               #@{ name = '*'; allowance = 'optional' }
-            )
-        }
-    }
-    else {
-        #
-        # Execute function
-        #
-
-        $system_params   = ConvertFrom-Json2 $SystemParams
-        $function_params = ConvertFrom-Json2 $FunctionParams
-
-        Open-MsExchangeSession $system_params
-
-        $key = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name
-
-        $call_params = @{
-            Identity = $function_params.$key
-        }
-
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
-
-        $function_params.Remove($key)
-
-        $call_params += $function_params
-
-        try {
-            LogIO info "Set-MsExchangeMailUser" -In @call_params
-                $rv = Set-MsExchangeMailUser @call_params
-            LogIO info "Set-MsExchangeMailUser" -Out $rv
-
-            $rv
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
-        }
-    }
-
-    Log info "Done"
-}
-
-function Idm-MailUserEnable {
-    param (
-        # Operations
-        [switch] $GetMeta,
-        # Parameters
-        [string] $SystemParams,
-        [string] $FunctionParams
-    )
-
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
-
-    if ($GetMeta) {
-        #
-        # Get meta data
-        #
-        @{
-            semantics = 'create'
-            parameters = @(
-                @{ name = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
-
-                $Global:Properties.MailUser | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('enable') } | ForEach-Object {
-                    @{ name = $_.name; allowance = 'prohibited' }
-                }
-
-                $Global:Properties.MailUser | Where-Object { !$_.options.Contains('key') -and $_.options.Contains('enable') } | ForEach-Object {
-                    @{ name = $_.name; allowance = 'optional' }
-                }
-            )
-        }
-    }
-    else {
-        #
-        # Execute function
-        #
-
-        $system_params   = ConvertFrom-Json2 $SystemParams
-        $function_params = ConvertFrom-Json2 $FunctionParams
-
-        Open-MsExchangeSession $system_params
-
-        $key = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name
-
-        $call_params = @{
-            Identity = $function_params.$key
-        }
-
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
-
-        $function_params.Remove($key)
-
-        $call_params += $function_params
-
-        try {
-            LogIO info "Enable-MsExchangeMailUser" -In @call_params
-                $rv = Enable-MsExchangeMailUser @call_params
-            LogIO info "Enable-MsExchangeMailUser" -Out $rv
-
-            $rv
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
-        }
-    }
-
-    Log info "Done"
-}
-
-function Idm-MailUserDisable {
-    param (
-        # Operations
-        [switch] $GetMeta,
-        # Parameters
-        [string] $SystemParams,
-        [string] $FunctionParams
-    )
-
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
-
-    if ($GetMeta) {
-        #
-        # Get meta data
-        #
-
-        @{
-            semantics = 'delete'
-            parameters = @(
-                @{ name = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name; allowance = 'mandatory' }
-
-                $Global:Properties.MailUser | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('disable') } | ForEach-Object {
-                    @{ name = $_.name; allowance = 'prohibited' }
-                }
-
-               #@{ name = '*'; allowance = 'optional' }
-            )
-        }
-    }
-    else {
-        #
-        # Execute function
-        #
-
-        $system_params   = ConvertFrom-Json2 $SystemParams
-        $function_params = ConvertFrom-Json2 $FunctionParams
-
-        Open-MsExchangeSession $system_params
-
-        $key = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name
-
-        $call_params = @{
-            Identity = $function_params.$key
-            Confirm  = $false   # Be non-interactive
-        }
-
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
-
-        $function_params.Remove($key)
-
-        $call_params += $function_params
-
-        try {
-            LogIO info "Disable-MsExchangeMailUser" -In @call_params
-                $rv = Disable-MsExchangeMailUser @call_params
-            LogIO info "Disable-MsExchangeMailUser" -Out $rv
-
-            $rv
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
-        }
-    }
-
-    Log info "Done"
-}
 
 #
 # Helper functions
@@ -2434,7 +2011,6 @@ function Get-ClassMetaData {
             name = 'properties'
             type = 'grid'
             label = 'Properties'
-            description = 'Selected properties'
             table = @{
                 rows = @( $Global:Properties.$Class | ForEach-Object {
                     @{
