@@ -1,3 +1,4 @@
+# version: 2.1
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -650,6 +651,19 @@ $Properties = @{
         @{ name = 'WhenCreated';                                                                                 }
         @{ name = 'WhenCreatedUTC';                                                                              }
         @{ name = 'WorkerProcessId';                                                                             }
+    )
+
+    MailboxPermission = @(
+        @{ name = 'ExchangeGuid';                                        options = @('default','key')            }         
+        @{ name = 'RunspaceId';                                                                                  }
+        @{ name = 'AccessRights';                                        options = @('default')                  }
+        @{ name = 'Deny';                                                options = @('default')                  }
+        @{ name = 'InheirtanceType';                                     options = @('default')                  }
+        @{ name = 'User';                                                options = @('default')                  }
+        @{ name = 'Identity';                                            options = @('default')                  }
+        @{ name = 'IsInherited';                                         options = @('default')                  }
+        @{ name = 'True';                                                options = @('default')                  }
+        @{ name = 'Unchanged';                                           options = @('default')                  }
     )
 
     MailboxStatistics = @(
@@ -1527,6 +1541,79 @@ function Idm-MailboxDatabasesRead {
     Log info "Done"
 }
 
+function Idm-MailboxPermissionsRead {
+    param (
+        # Operations
+        [switch] $GetMeta,
+        # Parameters
+        [string] $SystemParams,
+        [string] $FunctionParams
+    )
+
+    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+
+    if ($GetMeta) {
+        #
+        # Get meta data
+        #
+
+        Get-ClassMetaData -SystemParams $SystemParams -Class 'MailboxPermission'
+    }
+    else {
+        #
+        # Execute function
+        #
+
+        $system_params   = ConvertFrom-Json2 $SystemParams
+        $function_params = ConvertFrom-Json2 $FunctionParams
+
+        Open-MsExchangeSession $system_params
+
+        $call_params = @{
+            ResultSize = 'Unlimited'
+        }
+
+        if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
+            $call_params.OrganizationalUnit = $system_params.organizational_unit
+        }
+
+        if ($system_params.domain_controller.length -gt 0) {
+            $call_params.DomainController = $system_params.domain_controller
+        }
+
+        $properties = $function_params.properties
+
+        if ($properties.length -eq 0) {
+            $properties = ($Global:Properties.MailboxPermission | Where-Object { $_.options.Contains('default') }).name
+        }
+
+        # Assure key is the first column
+        $key = ($Global:Properties.MailboxPermission | Where-Object { $_.options.Contains('key') }).name
+        $properties = @($properties | Where-Object { $_ -ne $key })
+
+        try {
+            # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
+            #
+            # Cmdlet availability:
+            # v On-premises
+            # v Cloud
+
+            LogIO info "Get-MsExchangeMailboxMailbox" -In @call_params
+            $mailboxes = Get-MsExchangeMailbox @call_params 
+            
+            LogIO info "Get-MsExchangeMailboxPermission" -In @call_params
+            foreach ($mailbox in $mailboxes) {
+                $mailbox | Get-MsExchangeMailboxPermission | Select-Object $properties | Select-Object *,@{label="ExchangeGuid";expression={$mailbox.ExchangeGUID}}
+            }
+        }
+        catch {
+            Log error "Failed: $_"
+            Write-Error $_
+        }
+    }
+
+    Log info "Done"
+}
 
 function Idm-MailboxPermissionAdd {
     param (
