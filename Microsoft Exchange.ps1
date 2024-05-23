@@ -2007,7 +2007,9 @@ function Idm-RemoteMailboxSet {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
 
-               #@{ name = '*'; allowance = 'optional' }
+                $Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('set') } | ForEach-Object {
+                    @{ name = $_.name; allowance = 'optional' }
+                }
             )
         }
     }
