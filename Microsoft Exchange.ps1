@@ -1,4 +1,5 @@
-# version: 2.1
+# version: 2.2.1
+
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -289,7 +290,7 @@ $Properties = @{
         @{ name = 'AdminDisplayVersion';                                                                         }
         @{ name = 'AdministrativeUnits';                                                                         }
         @{ name = 'AggregatedMailboxGuids';                                                                      }
-        @{ name = 'Alias';                                               options = @('default', 'enable', 'set') }
+        @{ name = 'Alias';                                               options = @('default', 'create', 'enable', 'set') }
         @{ name = 'AntispamBypassEnabled';                               options = @('set')                      }
         @{ name = 'ArbitrationMailbox';                                  options = @('set')                      }
         @{ name = 'ArchiveDatabase';                                     options = @('enable', 'set')            }
@@ -336,7 +337,7 @@ $Properties = @{
         @{ name = 'DisabledArchiveGuid';                                                                         }
         @{ name = 'DisabledMailboxLocations';                                                                    }
         @{ name = 'DisableThrottling';                                   options = @('set')                      }
-        @{ name = 'DisplayName';                                         options = @('default', 'enable', 'set') }
+        @{ name = 'DisplayName';                                         options = @('default', 'create', 'enable', 'set') }
         @{ name = 'DistinguishedName';                                                                           }
         @{ name = 'DowngradeHighPriorityMessagesEnabled';                options = @('set')                      }
         @{ name = 'EffectivePublicFolderMailbox';                                                                }
@@ -383,7 +384,7 @@ $Properties = @{
         @{ name = 'IsPersonToPersonTextMessagingEnabled';                                                        }
         @{ name = 'IsResource';                                                                                  }
         @{ name = 'IsRootPublicFolderMailbox';                                                                   }
-        @{ name = 'IsShared';                                                                                    }
+        @{ name = 'IsShared';                                            options = @('create')                   }
         @{ name = 'IsSoftDeletedByDisable';                                                                      }
         @{ name = 'IsSoftDeletedByRemove';                                                                       }
         @{ name = 'IssueWarningQuota';                                   options = @('set')                      }
@@ -424,7 +425,7 @@ $Properties = @{
         @{ name = 'MicrosoftOnlineServicesID';                           options = @('set')                      }
         @{ name = 'ModeratedBy';                                         options = @('set')                      }
         @{ name = 'ModerationEnabled';                                   options = @('set')                      }
-        @{ name = 'Name';                                                options = @('set')                      }
+        @{ name = 'Name';                                                options = @('create','set')                      } ##
         @{ name = 'NetID';                                                                                       }
         @{ name = 'ObjectCategory';                                                                              }
         @{ name = 'ObjectClass';                                                                                 }
@@ -658,7 +659,7 @@ $Properties = @{
         @{ name = 'RunspaceId';                                                                                  }
         @{ name = 'AccessRights';                                        options = @('default')                  }
         @{ name = 'Deny';                                                options = @('default')                  }
-        @{ name = 'InheirtanceType';                                     options = @('default')                  }
+        @{ name = 'InheritanceType';                                     options = @('default')                  }
         @{ name = 'User';                                                options = @('default')                  }
         @{ name = 'Identity';                                            options = @('default')                  }
         @{ name = 'IsInherited';                                         options = @('default')                  }
@@ -1178,6 +1179,87 @@ function Idm-CASMailboxSet {
     Log info "Done"
 }
 
+function Idm-MailboxCreate {
+    param (
+        # Operations
+        [switch] $GetMeta,
+        # Parameters
+        [string] $SystemParams,
+        [string] $FunctionParams
+    )
+
+    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+
+    if ($GetMeta) {
+        #
+        # Get meta data
+        #
+
+        @{
+            semantics = 'create'
+            parameters = @(
+                $Global:Properties.Mailbox | Where-Object { $_.options.Contains('create') } | ForEach-Object {
+                    @{ name = $_.name; allowance = 'mandatory' }
+                }
+
+
+                $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('create') -and !$_.options.Contains('enable')} | ForEach-Object {
+                    @{ name = $_.name; allowance = 'prohibited' }
+                }
+
+               #@{ name = '*'; allowance = 'optional' }
+            )
+        }
+    }
+    else {
+        #
+        # Execute function
+        #
+
+        $system_params   = ConvertFrom-Json2 $SystemParams
+        $function_params = ConvertFrom-Json2 $FunctionParams
+
+        Open-MsExchangeSession $system_params
+
+        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
+        $shared = $function_params.IsShared
+        
+        $call_params = @{}
+        
+        if ($system_params.domain_controller.length -gt 0) {
+            $call_params.DomainController = $system_params.domain_controller
+        }
+
+        $function_params.Remove($key)
+        $function_params.Remove('IsShared')
+
+        $call_params += $function_params
+
+        try {
+            # https://learn.microsoft.com/en-us/powershell/module/exchange/new-mailbox?view=exchange-ps
+            #
+            # Cmdlet availability:
+            # v On-premises
+            # v Cloud
+
+            LogIO info "New-MsExchangeMailbox" -In @call_params
+                if($shared) {
+                    $rv = New-MsExchangeMailbox @call_params -Shared
+                } else {
+                    $rv = New-MsExchangeMailbox @call_params
+                }
+            LogIO info "New-MsExchangeMailbox" -Out $rv
+
+            $rv
+        }
+        catch {
+            Log error "Failed: $_"
+            Write-Error $_
+        }
+    }
+
+    Log info "Done"
+}
 
 function Idm-MailboxEnable {
     param (
