@@ -1970,12 +1970,13 @@ function Idm-RemoteMailboxEnable {
         if ($system_params.domain_controller.length -gt 0) {
             $call_params.DomainController = $system_params.domain_controller
         }
-        $function_params.Remove($key)
 
         if ( $function_params.archive ) {
             $call_params.archive = $true
+            $function_params.Remove('archive') 
         }
-        $function_params.Remove('archive')
+
+        $function_params.Remove($key)
 
         $call_params += $function_params
 
