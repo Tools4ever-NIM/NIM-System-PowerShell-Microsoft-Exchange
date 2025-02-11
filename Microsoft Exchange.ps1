@@ -1946,7 +1946,7 @@ function Idm-RemoteMailboxEnable {
                 $Global:Properties.RemoteMailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('enable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
-
+                @{ name = 'archive'; allowance = 'optional' }
                #@{ name = '*'; allowance = 'optional' }
             )
         }
@@ -1970,8 +1970,12 @@ function Idm-RemoteMailboxEnable {
         if ($system_params.domain_controller.length -gt 0) {
             $call_params.DomainController = $system_params.domain_controller
         }
-
         $function_params.Remove($key)
+
+        if ( $function_params.archive ) {
+            $call_params.archive = $true
+        }
+        $function_params.Remove('archive')
 
         $call_params += $function_params
 
