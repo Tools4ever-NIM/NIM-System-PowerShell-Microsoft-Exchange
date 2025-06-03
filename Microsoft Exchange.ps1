@@ -25,7 +25,7 @@ function Idm-SystemInfo {
         [string] $ConnectionParams
     )
 
-    Log info "-Connection=$Connection -TestConnection=$TestConnection -Configuration=$Configuration -ConnectionParams='$ConnectionParams'"
+    Log verbose "-Connection=$Connection -TestConnection=$TestConnection -Configuration=$Configuration -ConnectionParams='$ConnectionParams'"
     
     if ($Connection) {
         @(
@@ -195,7 +195,7 @@ function Idm-SystemInfo {
         )
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1050,7 +1050,7 @@ function Idm-CASMailboxesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1111,7 +1111,7 @@ function Idm-CASMailboxesRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1124,7 +1124,7 @@ function Idm-CASMailboxSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1189,7 +1189,7 @@ function Idm-CASMailboxSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxCreate {
@@ -1201,7 +1201,7 @@ function Idm-MailboxCreate {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1273,7 +1273,7 @@ function Idm-MailboxCreate {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxEnable {
@@ -1285,7 +1285,7 @@ function Idm-MailboxEnable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1350,7 +1350,7 @@ function Idm-MailboxEnable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1363,7 +1363,7 @@ function Idm-MailboxesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1424,7 +1424,7 @@ function Idm-MailboxesRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1437,7 +1437,7 @@ function Idm-MailboxSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1502,7 +1502,7 @@ function Idm-MailboxSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1515,7 +1515,7 @@ function Idm-MailboxDisable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1581,7 +1581,7 @@ function Idm-MailboxDisable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1594,7 +1594,7 @@ function Idm-MailboxDatabasesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1645,7 +1645,7 @@ function Idm-MailboxDatabasesRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxPermissionsRead {
@@ -1657,7 +1657,7 @@ function Idm-MailboxPermissionsRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1723,7 +1723,7 @@ function Idm-MailboxPermissionsRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxPermissionAdd {
@@ -1735,7 +1735,7 @@ function Idm-MailboxPermissionAdd {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1800,7 +1800,7 @@ function Idm-MailboxPermissionAdd {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1813,7 +1813,7 @@ function Idm-MailboxPermissionRemove {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1879,7 +1879,7 @@ function Idm-MailboxPermissionRemove {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1892,7 +1892,7 @@ function Idm-MailboxStatisticsRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1955,7 +1955,7 @@ function Idm-MailboxStatisticsRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1968,7 +1968,7 @@ function Idm-RemoteMailboxEnable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2033,7 +2033,7 @@ function Idm-RemoteMailboxEnable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -2046,7 +2046,7 @@ function Idm-RemoteMailboxesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2103,7 +2103,7 @@ function Idm-RemoteMailboxesRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -2116,7 +2116,7 @@ function Idm-RemoteMailboxSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2183,7 +2183,7 @@ function Idm-RemoteMailboxSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -2196,7 +2196,7 @@ function Idm-RemoteMailboxDisable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2262,7 +2262,7 @@ function Idm-RemoteMailboxDisable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUsersRead {
@@ -2274,7 +2274,7 @@ function Idm-MailUsersRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2325,7 +2325,7 @@ function Idm-MailUsersRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUserSet {
@@ -2337,7 +2337,7 @@ function Idm-MailUserSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2396,7 +2396,7 @@ function Idm-MailUserSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUserEnable {
@@ -2408,7 +2408,7 @@ function Idm-MailUserEnable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2468,7 +2468,7 @@ function Idm-MailUserEnable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUserDisable {
@@ -2480,7 +2480,7 @@ function Idm-MailUserDisable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2540,7 +2540,7 @@ function Idm-MailUserDisable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 #
@@ -2568,7 +2568,7 @@ function Open-MsExchangeSession {
     $connection_string = ConvertTo-Json $connection_params -Compress -Depth 32
 
     if ($Global:MsExchangePSSession -and $connection_string -ne $Global:MsExchangeConnectionString) {
-        Log info "MsExchangePSSession connection parameters changed"
+        Log verbose "MsExchangePSSession connection parameters changed"
         Close-MsExchangeSession
     }
 
@@ -2581,7 +2581,7 @@ function Open-MsExchangeSession {
         #Log debug "Reusing MsExchangePSSession"
     }
     else {
-        Log info "Opening MsExchangePSSession '$connection_string'"
+        Log verbose "Opening MsExchangePSSession '$connection_string'"
 
         try {
             $protocol = if ($connection_params.use_secure_connection) { 'https' } else { 'http' }
@@ -2629,14 +2629,14 @@ function Open-MsExchangeSession {
             Write-Error $_
         }
 
-        Log info "Done"
+        Log verbose "Done"
     }
 }
 
 
 function Close-MsExchangeSession {
     if ($Global:MsExchangePSSession) {
-        Log info "Closing MsExchangePSSession"
+        Log verbose "Closing MsExchangePSSession"
 
         try {
             Remove-PSSession -Session $Global:MsExchangePSSession -ErrorAction SilentlyContinue
@@ -2646,7 +2646,7 @@ function Close-MsExchangeSession {
             # Purposely ignoring errors
         }
 
-        Log info "Done"
+        Log verbose "Done"
     }
 }
 
