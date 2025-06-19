@@ -1,3 +1,4 @@
+# version: 2.4.1
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -2705,9 +2706,12 @@ function Get-ClassMetaData {
 
 function Get-Domains {
     param (
-        [boolean] $EnableMultiDomain,
+        [object] $EnableMultiDomain = $false,
         [string] $Server
     )
+    
+    # Normalize to boolean, treating null, empty string, or anything falsy as $false
+    $EnableMultiDomain = [bool]($EnableMultiDomain -and $EnableMultiDomain -ne "")
 
     if($EnableMultiDomain) {
         # Get the forest information
