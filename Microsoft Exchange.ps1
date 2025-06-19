@@ -25,7 +25,7 @@ function Idm-SystemInfo {
         [string] $ConnectionParams
     )
 
-    Log info "-Connection=$Connection -TestConnection=$TestConnection -Configuration=$Configuration -ConnectionParams='$ConnectionParams'"
+    Log verbose "-Connection=$Connection -TestConnection=$TestConnection -Configuration=$Configuration -ConnectionParams='$ConnectionParams'"
     
     if ($Connection) {
         @(
@@ -163,6 +163,13 @@ function Idm-SystemInfo {
 
         @(
             @{
+                name = 'enable_multi_domain'
+                type = 'checkbox'
+                label = 'Enable Multi-Domain support'
+                tooltip = 'Support multi domains for forest'
+                value = $false
+            }    
+            @{
                 name = 'organizational_unit'
                 type = 'combo'
                 label = 'Organizational unit'
@@ -175,6 +182,7 @@ function Idm-SystemInfo {
                     }
                 }
                 value = '*'
+                hidden = 'enable_multi_domain'
             }
             @{
                 name = 'domain_controller'
@@ -182,11 +190,12 @@ function Idm-SystemInfo {
                 label = 'Domain controller'
                 description = 'Name of Domain Controller to target'
                 value = ''
+                hidden = 'enable_multi_domain'
             }
         )
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1041,7 +1050,7 @@ function Idm-CASMailboxesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1060,45 +1069,49 @@ function Idm-CASMailboxesRead {
 
         Open-MsExchangeSession $system_params
 
-        $call_params = @{
-            ResultSize = 'Unlimited'
-        }
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
 
-        if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
-            $call_params.OrganizationalUnit = $system_params.organizational_unit
-        }
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
+            }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
+            if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
+                $call_params.OrganizationalUnit = $system_params.organizational_unit
+            }
 
-        $properties = $function_params.properties
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
 
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('default') }).name
-        }
+            $properties = $function_params.properties
 
-        # Assure key is the first column
-        $key = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('default') }).name
+            }
 
-        try {
-            # https://docs.microsoft.com/en-us/powershell/module/exchange/client-access/get-casmailbox?view=exchange-ps
-            #
-            # Cmdlet availability:
-            # v On-premises
-            # v Cloud
+            # Assure key is the first column
+            $key = ($Global:Properties.CASMailbox | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
-            LogIO info "Get-MsExchangeCASMailbox" -In @call_params
-            Get-MsExchangeCASMailbox @call_params | Select-Object $properties
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/client-access/get-casmailbox?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # v Cloud
+
+                LogIO info "Get-MsExchangeCASMailbox" -In @call_params
+                Get-MsExchangeCASMailbox @call_params | Select-Object $properties
+            }
+            catch {
+                Log error "Failed: $_"
+                Write-Error $_
+            }
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1111,7 +1124,7 @@ function Idm-CASMailboxSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1147,8 +1160,10 @@ function Idm-CASMailboxSet {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1174,7 +1189,7 @@ function Idm-CASMailboxSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxCreate {
@@ -1186,7 +1201,7 @@ function Idm-MailboxCreate {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1224,8 +1239,10 @@ function Idm-MailboxCreate {
         
         $call_params = @{}
         
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1256,7 +1273,7 @@ function Idm-MailboxCreate {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxEnable {
@@ -1268,7 +1285,7 @@ function Idm-MailboxEnable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1303,9 +1320,11 @@ function Idm-MailboxEnable {
         $call_params = @{
             Identity = $function_params.$key
         }
+        
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1331,7 +1350,7 @@ function Idm-MailboxEnable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1344,7 +1363,7 @@ function Idm-MailboxesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1363,45 +1382,49 @@ function Idm-MailboxesRead {
 
         Open-MsExchangeSession $system_params
 
-        $call_params = @{
-            ResultSize = 'Unlimited'
-        }
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
 
-        if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
-            $call_params.OrganizationalUnit = $system_params.organizational_unit
-        }
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
+            }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
+            if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
+                $call_params.OrganizationalUnit = $system_params.organizational_unit
+            }
 
-        $properties = $function_params.properties
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
 
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('default') }).name
-        }
+            $properties = $function_params.properties
 
-        # Assure key is the first column
-        $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('default') }).name
+            }
 
-        try {
-            # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
-            #
-            # Cmdlet availability:
-            # v On-premises
-            # v Cloud
+            # Assure key is the first column
+            $key = ($Global:Properties.Mailbox | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
-            LogIO info "Get-MsExchangeMailbox" -In @call_params
-            Get-MsExchangeMailbox @call_params | Select-Object $properties
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # v Cloud
+
+                LogIO info "Get-MsExchangeMailbox" -In @call_params
+                Get-MsExchangeMailbox @call_params | Select-Object $properties
+            }
+            catch {
+                Log error "Failed: $_"
+                Write-Error $_
+            }
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1414,7 +1437,7 @@ function Idm-MailboxSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1450,8 +1473,10 @@ function Idm-MailboxSet {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1477,7 +1502,7 @@ function Idm-MailboxSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1490,7 +1515,7 @@ function Idm-MailboxDisable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1527,8 +1552,10 @@ function Idm-MailboxDisable {
             Confirm  = $false   # Be non-interactive
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1554,7 +1581,7 @@ function Idm-MailboxDisable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1567,7 +1594,7 @@ function Idm-MailboxDatabasesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1618,7 +1645,7 @@ function Idm-MailboxDatabasesRead {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxPermissionsRead {
@@ -1630,7 +1657,7 @@ function Idm-MailboxPermissionsRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1649,50 +1676,54 @@ function Idm-MailboxPermissionsRead {
 
         Open-MsExchangeSession $system_params
 
-        $call_params = @{
-            ResultSize = 'Unlimited'
-        }
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
 
-        if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
-            $call_params.OrganizationalUnit = $system_params.organizational_unit
-        }
-
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
-
-        $properties = $function_params.properties
-
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.MailboxPermission | Where-Object { $_.options.Contains('default') }).name
-        }
-
-        # Assure key is the first column
-        $key = ($Global:Properties.MailboxPermission | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($properties | Where-Object { $_ -ne $key })
-
-        try {
-            # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
-            #
-            # Cmdlet availability:
-            # v On-premises
-            # v Cloud
-
-            LogIO info "Get-MsExchangeMailboxMailbox" -In @call_params
-            $mailboxes = Get-MsExchangeMailbox @call_params 
-            
-            LogIO info "Get-MsExchangeMailboxPermission" -In @call_params
-            foreach ($mailbox in $mailboxes) {
-                $mailbox | Get-MsExchangeMailboxPermission | Select-Object $properties | Select-Object *,@{label="ExchangeGuid";expression={$mailbox.ExchangeGUID}}
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
             }
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
+
+            if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
+                $call_params.OrganizationalUnit = $system_params.organizational_unit
+            }
+
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
+
+            $properties = $function_params.properties
+
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.MailboxPermission | Where-Object { $_.options.Contains('default') }).name
+            }
+
+            # Assure key is the first column
+            $key = ($Global:Properties.MailboxPermission | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($properties | Where-Object { $_ -ne $key })
+
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # v Cloud
+
+                LogIO info "Get-MsExchangeMailboxMailbox" -In @call_params
+                $mailboxes = Get-MsExchangeMailbox @call_params 
+                
+                LogIO info "Get-MsExchangeMailboxPermission" -In @call_params
+                foreach ($mailbox in $mailboxes) {
+                    $mailbox | Get-MsExchangeMailboxPermission -DomainController $call_params.DomainController | Select-Object $properties | Select-Object *,@{label="ExchangeGuid";expression={$mailbox.ExchangeGUID}}
+                }
+            }
+            catch {
+                Log error "Failed: $_"
+                Write-Error $_
+            }
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailboxPermissionAdd {
@@ -1704,7 +1735,7 @@ function Idm-MailboxPermissionAdd {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1740,8 +1771,10 @@ function Idm-MailboxPermissionAdd {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1767,7 +1800,7 @@ function Idm-MailboxPermissionAdd {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1780,7 +1813,7 @@ function Idm-MailboxPermissionRemove {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1817,8 +1850,10 @@ function Idm-MailboxPermissionRemove {
             Confirm  = $false   # Be non-interactive
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -1844,7 +1879,7 @@ function Idm-MailboxPermissionRemove {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1857,7 +1892,7 @@ function Idm-MailboxStatisticsRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1876,47 +1911,51 @@ function Idm-MailboxStatisticsRead {
 
         Open-MsExchangeSession $system_params
 
-        $call_params = @{
-            # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailboxstatistics?view=exchange-ps
-            #
-            # Parameter availability:
-            # v On-premises
-            # x Cloud
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
 
-            Server = $system_params.server
-        }
+        foreach($domain in $domains) {
+            $call_params = @{
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailboxstatistics?view=exchange-ps
+                #
+                # Parameter availability:
+                # v On-premises
+                # x Cloud
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
+                Server = $system_params.server
+            }
 
-        $properties = $function_params.properties
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
 
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.MailboxStatistics | Where-Object { $_.options.Contains('default') }).name
-        }
+            $properties = $function_params.properties
 
-        # Assure key is the first column
-        $key = ($Global:Properties.MailboxStatistics | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.MailboxStatistics | Where-Object { $_.options.Contains('default') }).name
+            }
 
-        try {
-            # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailboxstatistics?view=exchange-ps
-            #
-            # Cmdlet availability:
-            # v On-premises
-            # v Cloud
+            # Assure key is the first column
+            $key = ($Global:Properties.MailboxStatistics | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
-            LogIO info "Get-MsExchangeMailboxStatistics" -In @call_params
-            Get-MsExchangeMailboxStatistics @call_params | Select-Object $properties
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailboxstatistics?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # v Cloud
+
+                LogIO info "Get-MsExchangeMailboxStatistics" -In @call_params
+                Get-MsExchangeMailboxStatistics @call_params | Select-Object $properties
+            }
+            catch {
+                Log error "Failed: $_"
+                Write-Error $_
+            }
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -1929,7 +1968,7 @@ function Idm-RemoteMailboxEnable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -1965,8 +2004,10 @@ function Idm-RemoteMailboxEnable {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         if ( $function_params.Archive ) {
@@ -1997,7 +2038,7 @@ function Idm-RemoteMailboxEnable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -2010,7 +2051,7 @@ function Idm-RemoteMailboxesRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2029,41 +2070,45 @@ function Idm-RemoteMailboxesRead {
 
         Open-MsExchangeSession $system_params
 
-        $call_params = @{
-            ResultSize = 'Unlimited'
-        }
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
+            }
 
-        $properties = $function_params.properties
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
 
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('default') }).name
-        }
+            $properties = $function_params.properties
 
-        # Assure key is the first column
-        $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('default') }).name
+            }
 
-        try {
-            # https://docs.microsoft.com/en-us/powershell/module/exchange/federation-and-hybrid/get-remotemailbox?view=exchange-ps
-            #
-            # Cmdlet availability:
-            # v On-premises
-            # x Cloud
+            # Assure key is the first column
+            $key = ($Global:Properties.RemoteMailbox | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
 
-            LogIO info "Get-MsExchangeRemoteMailbox" -In @call_params
-            Get-MsExchangeRemoteMailbox @call_params | Select-Object $properties
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/federation-and-hybrid/get-remotemailbox?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # x Cloud
+
+                LogIO info "Get-MsExchangeRemoteMailbox" -In @call_params
+                Get-MsExchangeRemoteMailbox @call_params | Select-Object $properties
+            }
+            catch {
+                Log error "Failed: $_"
+                Write-Error $_
+            }
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -2076,7 +2121,7 @@ function Idm-RemoteMailboxSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2114,8 +2159,10 @@ function Idm-RemoteMailboxSet {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -2141,7 +2188,7 @@ function Idm-RemoteMailboxSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 
@@ -2154,7 +2201,7 @@ function Idm-RemoteMailboxDisable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2191,8 +2238,10 @@ function Idm-RemoteMailboxDisable {
             Confirm  = $false   # Be non-interactive
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -2218,7 +2267,7 @@ function Idm-RemoteMailboxDisable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUsersRead {
@@ -2230,7 +2279,7 @@ function Idm-MailUsersRead {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2249,35 +2298,39 @@ function Idm-MailUsersRead {
 
         Open-MsExchangeSession $system_params
 
-        $call_params = @{
-            ResultSize = 'Unlimited'
-        }
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
-        }
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
+            }
 
-        $properties = $function_params.properties
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
 
-        if ($properties.length -eq 0) {
-            $properties = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('default') }).name
-        }
-        
-        # Assure key is the first column
-        $key = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name
-        $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
-        
-        try {
-            LogIO info "Get-MsExchangeMailUser" -In @call_params
-            Get-MsExchangeMailUser @call_params | Select-Object $properties
-        }
-        catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            $properties = $function_params.properties
+
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('default') }).name
+            }
+            
+            # Assure key is the first column
+            $key = ($Global:Properties.MailUser | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+            
+            try {
+                LogIO info "Get-MsExchangeMailUser" -In @call_params
+                Get-MsExchangeMailUser @call_params | Select-Object $properties
+            }
+            catch {
+                Log error "Failed: $_"
+                Write-Error $_
+            }
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUserSet {
@@ -2289,7 +2342,7 @@ function Idm-MailUserSet {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2325,8 +2378,10 @@ function Idm-MailUserSet {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -2346,7 +2401,7 @@ function Idm-MailUserSet {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUserEnable {
@@ -2358,7 +2413,7 @@ function Idm-MailUserEnable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2395,8 +2450,10 @@ function Idm-MailUserEnable {
             Identity = $function_params.$key
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -2416,7 +2473,7 @@ function Idm-MailUserEnable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-MailUserDisable {
@@ -2428,7 +2485,7 @@ function Idm-MailUserDisable {
         [string] $FunctionParams
     )
 
-    Log info "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
 
     if ($GetMeta) {
         #
@@ -2465,8 +2522,10 @@ function Idm-MailUserDisable {
             Confirm  = $false   # Be non-interactive
         }
 
-        if ($system_params.domain_controller.length -gt 0) {
-            $call_params.DomainController = $system_params.domain_controller
+        $server = Get-TargetServer -EnableMultiDomain $system_params.enable_multi_domain -GUID $function_params.GUID -Server $system_params.domain_controller
+
+        if ($server.length -gt 0) {
+            $call_params.DomainController = $server
         }
 
         $function_params.Remove($key)
@@ -2486,7 +2545,7 @@ function Idm-MailUserDisable {
         }
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 #
@@ -2514,7 +2573,7 @@ function Open-MsExchangeSession {
     $connection_string = ConvertTo-Json $connection_params -Compress -Depth 32
 
     if ($Global:MsExchangePSSession -and $connection_string -ne $Global:MsExchangeConnectionString) {
-        Log info "MsExchangePSSession connection parameters changed"
+        Log verbose "MsExchangePSSession connection parameters changed"
         Close-MsExchangeSession
     }
 
@@ -2527,7 +2586,7 @@ function Open-MsExchangeSession {
         #Log debug "Reusing MsExchangePSSession"
     }
     else {
-        Log info "Opening MsExchangePSSession '$connection_string'"
+        Log verbose "Opening MsExchangePSSession '$connection_string'"
 
         try {
             $protocol = if ($connection_params.use_secure_connection) { 'https' } else { 'http' }
@@ -2575,14 +2634,14 @@ function Open-MsExchangeSession {
             Write-Error $_
         }
 
-        Log info "Done"
+        Log verbose "Done"
     }
 }
 
 
 function Close-MsExchangeSession {
     if ($Global:MsExchangePSSession) {
-        Log info "Closing MsExchangePSSession"
+        Log verbose "Closing MsExchangePSSession"
 
         try {
             Remove-PSSession -Session $Global:MsExchangePSSession -ErrorAction SilentlyContinue
@@ -2592,7 +2651,7 @@ function Close-MsExchangeSession {
             # Purposely ignoring errors
         }
 
-        Log info "Done"
+        Log verbose "Done"
     }
 }
 
@@ -2647,6 +2706,79 @@ function Get-ClassMetaData {
             value = ($Global:Properties.$Class | Where-Object { $_.options.Contains('default') }).name
         }
     )
+}
+
+function Get-Domains {
+    param (
+        [object] $EnableMultiDomain = $false,
+        [string] $Server
+    )
+    
+    # Normalize to boolean, treating null, empty string, or anything falsy as $false
+    $EnableMultiDomain = [bool]($EnableMultiDomain -and $EnableMultiDomain -ne "")
+
+    if($EnableMultiDomain) {
+        # Get the forest information
+        $forest = Get-ADForest
+
+        # Create an array to store results
+        $domains = @()
+
+        # Loop through each domain in the forest
+        foreach ($domain in $forest.Domains) {
+            # Get the PDC Emulator for the domain
+            $pdc = (Get-ADDomain -Server $domain).PDCEmulator
+
+            # Check if the PDC is also a Global Catalog
+            $dcInfo = Get-ADDomainController -Identity $pdc -Server $domain
+            $isGC = $dcInfo.IsGlobalCatalog
+
+            # Store the results
+            $domains += [PSCustomObject]@{
+                Domain       = $domain
+                PDC          = $pdc
+                IsGlobalCatalog = $isGC
+            }
+        }
+    } else {
+        $domains = @(@{
+            Domain       = ''
+            PDC          = $Server
+            IsGlobalCatalog = ''
+        })
+    }
+
+    $domains
+}
+
+function Get-TargetServer {
+    param (
+        [boolean] $EnableMultiDomain,    
+        [string] $GUID,
+        [string] $Server
+    )
+
+    if($EnableMultiDomain) {
+        $guidBytes = [guid]::Parse($GUID).ToByteArray()
+
+        $gcServers = (Get-ADForest).GlobalCatalogs
+
+        foreach ($gc in $gcServers) {
+            try {
+                $user = Get-ADUser -Filter { ObjectGUID -eq $guidBytes } -Server $gc -Properties *
+                if ($user) {
+                    $gc
+                    break  # Stop after the first match
+                }
+            } catch {
+                Log error "Error querying GC: $gc"
+            }
+        }
+    } else {
+        if ($system_params.domain_controller.length -gt 0) {
+            $Server
+        }
+    }
 }
 
 $configScenarios = @'
