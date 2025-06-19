@@ -1,4 +1,3 @@
-# version: 2.4.1
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -1984,7 +1983,7 @@ function Idm-RemoteMailboxEnable {
                 $Global:Properties.RemoteMailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('enable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
-
+                @{ name = 'Archive'; allowance = 'optional' }
                #@{ name = '*'; allowance = 'optional' }
             )
         }
@@ -2009,6 +2008,11 @@ function Idm-RemoteMailboxEnable {
 
         if ($server.length -gt 0) {
             $call_params.DomainController = $server
+        }
+
+        if ( $function_params.Archive ) {
+            $call_params.archive = $true
+            $function_params.Remove('Archive') 
         }
 
         $function_params.Remove($key)
@@ -2776,3 +2780,71 @@ function Get-TargetServer {
         }
     }
 }
+
+$configScenarios = @'
+[{"name":"Exchange - Default RemoteMailboxes","description":"3 tables: CASMailboxes, Mailboxes, Remo
+teMailboxes","version":"1.0","createTime":1750347417722,"modifyTime":1750347417722,"name_values":[{"
+name":"authentication","value":null},{"name":"collections","value":["CASMailboxes","Mailboxes","Remo
+teMailboxes"]},{"name":"domain_controller","value":""},{"name":"enable_multi_domain","value":false},
+{"name":"nr_of_sessions","value":null},{"name":"organizational_unit","value":"*"},{"name":"proxy_acc
+ess_type","value":null},{"name":"server","value":null},{"name":"sessions_idle_timeout","value":null}
+,{"name":"skip_certificate_checks","value":null},{"name":"use_proxy_server","value":null},{"name":"u
+se_secure_connection","value":null},{"name":"use_svc_account_creds","value":null},{"name":"username"
+,"value":null},{"name":"password","value":null}],"collections":[{"col_name":"CASMailboxes","fields":
+[{"field_name":"Guid","field_type":"string","include":true,"field_format":"","field_source":"data","
+javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"ActiveSyncEnabled"
+,"field_type":"string","include":true,"field_format":"","field_source":"data","javascript":"","ref_c
+ol":[],"reference":false,"ref_col_fields":[]},{"field_name":"ECPEnabled","field_type":"string","incl
+ude":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"re
+f_col_fields":[]},{"field_name":"Id","field_type":"string","include":true,"field_format":"","field_s
+ource":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"Ide
+ntity","field_type":"string","include":true,"field_format":"","field_source":"data","javascript":"",
+"ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"ImapEnabled","field_type":"string
+","include":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"reference":fa
+lse,"ref_col_fields":[]},{"field_name":"IsValid","field_type":"string","include":true,"field_format"
+:"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"fiel
+d_name":"LinkedMasterAccount","field_type":"string","include":true,"field_format":"","field_source":
+"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"OWAEnabled
+","field_type":"string","include":true,"field_format":"","field_source":"data","javascript":"","ref_
+col":[],"reference":false,"ref_col_fields":[]},{"field_name":"PopEnabled","field_type":"string","inc
+lude":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"r
+ef_col_fields":[]},{"field_name":"PrimarySmtpAddress","field_type":"string","include":true,"field_fo
+rmat":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]}],
+"key":"Guid","display":"Identity","name_values":[],"sys_nn":[],"container":"","source":"data"},{"col
+_name":"Mailboxes","fields":[{"field_name":"Guid","field_type":"string","include":true,"field_format
+":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"fie
+ld_name":"Alias","field_type":"string","include":true,"field_format":"","field_source":"data","javas
+cript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"ArchiveName","field_typ
+e":"string","include":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"ref
+erence":false,"ref_col_fields":[]},{"field_name":"Database","field_type":"string","include":true,"fi
+eld_format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields"
+:[]},{"field_name":"DisplayName","field_type":"string","include":true,"field_format":"","field_sourc
+e":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"EmailAd
+dresses","field_type":"string","include":true,"field_format":"","field_source":"data","javascript":"
+","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"Id","field_type":"string","incl
+ude":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"re
+f_col_fields":[]},{"field_name":"PrimarySmtpAddress","field_type":"string","include":true,"field_for
+mat":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]}],"
+key":"Guid","display":"DisplayName","name_values":[],"sys_nn":[],"container":"","source":"data"},{"c
+ol_name":"RemoteMailboxes","fields":[{"field_name":"Guid","field_type":"string","include":true,"fiel
+d_format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[
+]},{"field_name":"Alias","field_type":"string","include":true,"field_format":"","field_source":"data
+","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"ArchiveName","f
+ield_type":"string","include":true,"field_format":"","field_source":"data","javascript":"","ref_col"
+:[],"reference":false,"ref_col_fields":[]},{"field_name":"ArchiveState","field_type":"string","inclu
+de":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref
+_col_fields":[]},{"field_name":"ArchiveStatus","field_type":"string","include":true,"field_format":"
+","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_
+name":"DistinguishedName","field_type":"string","include":true,"field_format":"","field_source":"dat
+a","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"Id","field_typ
+e":"string","include":true,"field_format":"","field_source":"data","javascript":"","ref_col":[],"ref
+erence":false,"ref_col_fields":[]},{"field_name":"Name","field_type":"string","include":true,"field_
+format":"","field_source":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]}
+,{"field_name":"PrimarySmtpAddress","field_type":"string","include":true,"field_format":"","field_so
+urce":"data","javascript":"","ref_col":[],"reference":false,"ref_col_fields":[]},{"field_name":"Remo
+teRoutingAddress","field_type":"string","include":true,"field_format":"","field_source":"data","java
+script":"","ref_col":[],"reference":false,"ref_col_fields":[]}],"key":"Guid","display":"Name","name_
+values":[{"name":"properties","value":["Alias","ArchiveName","ArchiveState","ArchiveStatus","Disting
+uishedName","Guid","Id","Name","PrimarySmtpAddress","RemoteRoutingAddress"]}],"sys_nn":[],"container
+":"","source":"data"}]}]
+'@
