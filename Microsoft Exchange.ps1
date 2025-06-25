@@ -1300,6 +1300,7 @@ function Idm-MailboxEnable {
                 $Global:Properties.Mailbox | Where-Object { !$_.options.Contains('key') -and !$_.options.Contains('enable') } | ForEach-Object {
                     @{ name = $_.name; allowance = 'prohibited' }
                 }
+                @{ name = 'Archive'; allowance = 'optional' }
 
                #@{ name = '*'; allowance = 'optional' }
             )
@@ -1325,6 +1326,11 @@ function Idm-MailboxEnable {
 
         if ($server.length -gt 0) {
             $call_params.DomainController = $server
+        }
+
+        if ( $function_params.Archive ) {
+            $call_params.archive = $true
+            $function_params.Remove('Archive') 
         }
 
         $function_params.Remove($key)
