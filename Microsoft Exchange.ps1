@@ -1106,8 +1106,7 @@ function Idm-CASMailboxesRead {
                 Get-MsExchangeCASMailbox @call_params | Select-Object $properties
             }
             catch {
-                Log error "Failed: $_"
-                Write-Error $_
+                Log error "$($_)"
             }
         }
     }
@@ -1185,8 +1184,7 @@ function Idm-CASMailboxSet {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1269,8 +1267,7 @@ function Idm-MailboxCreate {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1346,8 +1343,7 @@ function Idm-MailboxEnable {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1419,8 +1415,7 @@ function Idm-MailboxesRead {
                 Get-MsExchangeMailbox @call_params | Select-Object $properties
             }
             catch {
-                Log error "Failed: $_"
-                Write-Error $_
+                Log error "$($_)"
             }
         }
     }
@@ -1498,8 +1493,7 @@ function Idm-MailboxSet {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1577,8 +1571,7 @@ function Idm-MailboxDisable {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1641,8 +1634,7 @@ function Idm-MailboxDatabasesRead {
             Get-MsExchangeMailboxDatabase | Select-Object $properties
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1718,8 +1710,7 @@ function Idm-MailboxPermissionsRead {
                 }
             }
             catch {
-                Log error "Failed: $_"
-                Write-Error $_
+                Log error "$($_)"
             }
         }
     }
@@ -1796,8 +1787,7 @@ function Idm-MailboxPermissionAdd {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1875,8 +1865,7 @@ function Idm-MailboxPermissionRemove {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -1950,8 +1939,7 @@ function Idm-MailboxStatisticsRead {
                 Get-MsExchangeMailboxStatistics @call_params | Select-Object $properties
             }
             catch {
-                Log error "Failed: $_"
-                Write-Error $_
+                Log error "$($_)"
             }
         }
     }
@@ -2029,8 +2017,7 @@ function Idm-RemoteMailboxEnable {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -2098,8 +2085,7 @@ function Idm-RemoteMailboxesRead {
                 Get-MsExchangeRemoteMailbox @call_params | Select-Object $properties
             }
             catch {
-                Log error "Failed: $_"
-                Write-Error $_
+                Log error "$($_)"
             }
         }
     }
@@ -2179,8 +2165,7 @@ function Idm-RemoteMailboxSet {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -2258,8 +2243,7 @@ function Idm-RemoteMailboxDisable {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -2320,8 +2304,7 @@ function Idm-MailUsersRead {
                 Get-MsExchangeMailUser @call_params | Select-Object $properties
             }
             catch {
-                Log error "Failed: $_"
-                Write-Error $_
+                Log error "$($_)"
             }
         }
     }
@@ -2392,8 +2375,7 @@ function Idm-MailUserSet {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -2464,8 +2446,7 @@ function Idm-MailUserEnable {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -2536,8 +2517,7 @@ function Idm-MailUserDisable {
             $rv
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
     }
 
@@ -2626,8 +2606,7 @@ function Open-MsExchangeSession {
             $Global:MsExchangeConnectionString = $connection_string
         }
         catch {
-            Log error "Failed: $_"
-            Write-Error $_
+            Log error "$($_)"
         }
 
         Log verbose "Done"
