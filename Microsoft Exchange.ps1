@@ -287,6 +287,118 @@ $Properties = @{
         @{ name = 'WhenCreatedUTC';                                                                              }
     )
 
+    DynamicDistributionGroup = @(
+        @{ name = 'Guid';                                   options = @('default', 'key')           }
+        @{ name = 'RecipientContainer';                     options = @('default') }
+        @{ name = 'RecipientFilter';                        options = @('default') }
+        @{ name = 'LdapRecipientFilter';                    options = @('default') }
+        @{ name = 'IncludedRecipients';                     options = @('default') }
+        @{ name = 'ConditionalDepartment';                  options = @('default') }
+        @{ name = 'ConditionalCompany';                     options = @('default') }
+        @{ name = 'ConditionalStateOrProvince';             options = @('default') }
+        @{ name = 'ConditionalCustomAttribute1';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute2';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute3';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute4';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute5';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute6';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute7';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute8';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute9';            options = @('default') }
+        @{ name = 'ConditionalCustomAttribute10';           options = @('default') }
+        @{ name = 'ConditionalCustomAttribute11';           options = @('default') }
+        @{ name = 'ConditionalCustomAttribute12';           options = @('default') }
+        @{ name = 'ConditionalCustomAttribute13';           options = @('default') }
+        @{ name = 'ConditionalCustomAttribute14';           options = @('default') }
+        @{ name = 'ConditionalCustomAttribute15';           options = @('default') }
+        @{ name = 'RecipientFilterType';                    options = @('default') }
+        @{ name = 'Notes';                                  options = @('default') }
+        @{ name = 'PhoneticDisplayName';                    options = @('default') }
+        @{ name = 'ManagedBy';                              options = @('default') }
+        @{ name = 'ExpansionServer';                        options = @('default') }
+        @{ name = 'ReportToManagerEnabled';                 options = @('default') }
+        @{ name = 'ReportToOriginatorEnabled';              options = @('default') }
+        @{ name = 'SendOofMessageToOriginatorEnabled';      options = @('default') }
+        @{ name = 'AcceptMessagesOnlyFrom';                 options = @('default') }
+        @{ name = 'AcceptMessagesOnlyFromDLMembers';        options = @('default') }
+        @{ name = 'AcceptMessagesOnlyFromSendersOrMembers'; options = @('default') }
+        @{ name = 'AddressListMembership';                  options = @('default') }
+        @{ name = 'AdministrativeUnits';                    options = @('default') }
+        @{ name = 'Alias';                                  options = @('default') }
+        @{ name = 'ArbitrationMailbox';                     options = @('default') }
+        @{ name = 'BypassModerationFromSendersOrMembers';   options = @('default') }
+        @{ name = 'OrganizationalUnit';                     options = @('default') }
+        @{ name = 'CustomAttribute1';                       options = @('default') }
+        @{ name = 'CustomAttribute10';                      options = @('default') }
+        @{ name = 'CustomAttribute11';                      options = @('default') }
+        @{ name = 'CustomAttribute12';                      options = @('default') }
+        @{ name = 'CustomAttribute13';                      options = @('default') }
+        @{ name = 'CustomAttribute14';                      options = @('default') }
+        @{ name = 'CustomAttribute15';                      options = @('default') }
+        @{ name = 'CustomAttribute2';                       options = @('default') }
+        @{ name = 'CustomAttribute3';                       options = @('default') }
+        @{ name = 'CustomAttribute4';                       options = @('default') }
+        @{ name = 'CustomAttribute5';                       options = @('default') }
+        @{ name = 'CustomAttribute6';                       options = @('default') }
+        @{ name = 'CustomAttribute7';                       options = @('default') }
+        @{ name = 'CustomAttribute8';                       options = @('default') }
+        @{ name = 'CustomAttribute9';                       options = @('default') }
+        @{ name = 'ExtensionCustomAttribute1';              options = @('default') }
+        @{ name = 'ExtensionCustomAttribute2';              options = @('default') }
+        @{ name = 'ExtensionCustomAttribute3';              options = @('default') }
+        @{ name = 'ExtensionCustomAttribute4';              options = @('default') }
+        @{ name = 'ExtensionCustomAttribute5';              options = @('default') }
+        @{ name = 'DisplayName';                            options = @('default') }
+        @{ name = 'EmailAddresses';                         options = @('default') }
+        @{ name = 'GrantSendOnBehalfTo';                    options = @('default') }
+        @{ name = 'ExternalDirectoryObjectId';              options = @('default') }
+        @{ name = 'HiddenFromAddressListsEnabled';          options = @('default') }
+        @{ name = 'LastExchangeChangedTime';                options = @('default') }
+        @{ name = 'LegacyExchangeDN';                       options = @('default') }
+        @{ name = 'MaxSendSize';                            options = @('default') }
+        @{ name = 'MaxReceiveSize';                         options = @('default') }
+        @{ name = 'ModeratedBy';                            options = @('default') }
+        @{ name = 'ModerationEnabled';                      options = @('default') }
+        @{ name = 'PoliciesIncluded';                       options = @('default') }
+        @{ name = 'PoliciesExcluded';                       options = @('default') }
+        @{ name = 'EmailAddressPolicyEnabled';              options = @('default') }
+        @{ name = 'PrimarySmtpAddress';                     options = @('default') }
+        @{ name = 'RecipientType';                          options = @('default') }
+        @{ name = 'RecipientTypeDetails';                   options = @('default') }
+        @{ name = 'RejectMessagesFrom';                     options = @('default') }
+        @{ name = 'RejectMessagesFromDLMembers';            options = @('default') }
+        @{ name = 'RejectMessagesFromSendersOrMembers';     options = @('default') }
+        @{ name = 'RequireSenderAuthenticationEnabled';     options = @('default') }
+        @{ name = 'SimpleDisplayName';                      options = @('default') }
+        @{ name = 'SendModerationNotifications';            options = @('default') }
+        @{ name = 'UMDtmfMap';                              options = @('default') }
+        @{ name = 'WindowsEmailAddress';                    options = @('default') }
+        @{ name = 'MailTip';                                options = @('default') }
+        @{ name = 'MailTipTranslations';                    options = @('default') }
+        @{ name = 'Identity';                               options = @('default') }
+        @{ name = 'IsValid';                                options = @('default') }
+        @{ name = 'ExchangeVersion';                        options = @('default') }
+        @{ name = 'Name';                                   options = @('default') }
+        @{ name = 'DistinguishedName';                      options = @('default') }
+        @{ name = 'Guid';                                   options = @('default') }
+        @{ name = 'ObjectCategory';                         options = @('default') }
+        @{ name = 'ObjectClass';                            options = @('default') }
+        @{ name = 'WhenChanged';                            options = @('default') }
+        @{ name = 'WhenCreated';                            options = @('default') }
+        @{ name = 'WhenChangedUTC';                         options = @('default') }
+        @{ name = 'WhenCreatedUTC';                         options = @('default') }
+        @{ name = 'OrganizationId';                         options = @('default') }
+        @{ name = 'Id';                                     options = @('default') }
+        @{ name = 'OriginatingServer';                      options = @('default') }
+        @{ name = 'ObjectState';                            options = @('default') }
+    )
+
+    DynamicDistributionGroupMember = @(
+        @{ name = 'GroupGuid';                                   options = @('default', 'key')           }
+        @{ name = 'Guid';                                   options = @('default')           }
+       
+    )
+
     Mailbox = @(
         @{ name = 'AcceptMessagesOnlyFrom';                              options = @('set')                      }
         @{ name = 'AcceptMessagesOnlyFromDLMembers';                     options = @('set')                      }
@@ -1113,7 +1225,6 @@ function Idm-CASMailboxesRead {
     Log verbose "Done"
 }
 
-
 function Idm-CASMailboxSet {
     param (
         # Operations
@@ -1184,6 +1295,159 @@ function Idm-CASMailboxSet {
         }
         catch {
             Log error "$($_)"
+        }
+    }
+
+    Log verbose "Done"
+}
+
+function Idm-DynamicDistributionGroupsRead {
+    param (
+        # Operations
+        [switch] $GetMeta,
+        # Parameters
+        [string] $SystemParams,
+        [string] $FunctionParams
+    )
+
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+
+    if ($GetMeta) {
+        #
+        # Get meta data
+        #
+
+        Get-ClassMetaData -SystemParams $SystemParams -Class 'DynamicDistributionGroup'
+    }
+    else {
+        #
+        # Execute function
+        #
+
+        $system_params   = ConvertFrom-Json2 $SystemParams
+        $function_params = ConvertFrom-Json2 $FunctionParams
+
+        Open-MsExchangeSession $system_params
+
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
+
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
+            }
+
+            if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
+                $call_params.OrganizationalUnit = $system_params.organizational_unit
+            }
+
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
+
+            $properties = $function_params.properties
+
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.DynamicDistributionGroup | Where-Object { $_.options.Contains('default') }).name
+            }
+
+            # Assure key is the first column
+            $key = ($Global:Properties.DynamicDistributionGroup | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # v Cloud
+
+                LogIO info "Get-MsExchangeDynamicDistributionGroup" -In @call_params
+                Get-MsExchangeDynamicDistributionGroup @call_params | Select-Object $properties
+            }
+            catch {
+                Log error "$($_)"
+            }
+        }
+    }
+
+    Log verbose "Done"
+}
+
+function Idm-DynamicDistributionGroupMembersRead {
+    param (
+        # Operations
+        [switch] $GetMeta,
+        # Parameters
+        [string] $SystemParams,
+        [string] $FunctionParams
+    )
+
+    Log verbose "-GetMeta=$GetMeta -SystemParams='$SystemParams' -FunctionParams='$FunctionParams'"
+
+    if ($GetMeta) {
+        #
+        # Get meta data
+        #
+
+        Get-ClassMetaData -SystemParams $SystemParams -Class 'DynamicDistributionGroupMember'
+    }
+    else {
+        #
+        # Execute function
+        #
+
+        $system_params   = ConvertFrom-Json2 $SystemParams
+        $function_params = ConvertFrom-Json2 $FunctionParams
+
+        Open-MsExchangeSession $system_params
+
+        $domains = Get-Domains -EnableMultiDomain $system_params.enable_multi_domain -Server $system_params.domain_controller
+
+        foreach($domain in $domains) {
+            $call_params = @{
+                ResultSize = 'Unlimited'
+            }
+
+            if ($system_params.organizational_unit.length -gt 0 -and $system_params.organizational_unit -ne '*') {
+                $call_params.OrganizationalUnit = $system_params.organizational_unit
+            }
+
+            if ($domain.PDC.length -gt 0) {
+                $call_params.DomainController = $domain.PDC
+            }
+
+            $properties = $function_params.properties
+
+            if ($properties.length -eq 0) {
+                $properties = ($Global:Properties.DynamicDistributionGroupMember | Where-Object { $_.options.Contains('default') }).name
+            }
+
+            # Assure key is the first column
+            $key = ($Global:Properties.DynamicDistributionGroupMember | Where-Object { $_.options.Contains('key') }).name
+            $properties = @($key) + @($properties | Where-Object { $_ -ne $key })
+
+            try {
+                # https://docs.microsoft.com/en-us/powershell/module/exchange/mailboxes/get-mailbox?view=exchange-ps
+                #
+                # Cmdlet availability:
+                # v On-premises
+                # v Cloud
+                
+                LogIO info "Get-MsExchangeDynamicDistributionGroup" -In @call_params
+                Log verbose "Retrieving groups with Get-MsExchangeDynamicDistributionGroup"
+                $groups = Get-MsExchangeDynamicDistributionGroup @call_params | Select-Object "GUID","RecipientFilter" 
+
+                foreach($group in $groups) {
+                    $sub_call_params = $call_params.Clone()
+                    $sub_call_params.RecipientPreviewFilter = $group.RecipientFilter
+                    LogIO info "Get-MsExchangeRecipient" -In @sub_call_params
+                    Log verbose "Group: $($group.GUID) - RecipientFilter: $($group.RecipientFilter)"
+                    Get-MsExchangeRecipient @sub_call_params | Select-Object  @(@{Name='GroupGUID'; Expression={$group.GUID}}, 'GUID')
+                }
+            }
+            catch {
+                Log error "$($_)"
+            }
         }
     }
 
@@ -1422,7 +1686,6 @@ function Idm-MailboxesRead {
     Log verbose "Done"
 }
 
-
 function Idm-MailboxSet {
     param (
         # Operations
@@ -1498,7 +1761,6 @@ function Idm-MailboxSet {
 
     Log verbose "Done"
 }
-
 
 function Idm-MailboxDisable {
     param (
@@ -1576,7 +1838,6 @@ function Idm-MailboxDisable {
 
     Log verbose "Done"
 }
-
 
 function Idm-MailboxDatabasesRead {
     param (
@@ -1793,7 +2054,6 @@ function Idm-MailboxPermissionAdd {
     Log verbose "Done"
 }
 
-
 function Idm-MailboxPermissionRemove {
     param (
         # Operations
@@ -1871,7 +2131,6 @@ function Idm-MailboxPermissionRemove {
     Log verbose "Done"
 }
 
-
 function Idm-MailboxStatisticsRead {
     param (
         # Operations
@@ -1945,7 +2204,6 @@ function Idm-MailboxStatisticsRead {
 
     Log verbose "Done"
 }
-
 
 function Idm-RemoteMailboxEnable {
     param (
@@ -2028,7 +2286,6 @@ function Idm-RemoteMailboxEnable {
     Log verbose "Done"
 }
 
-
 function Idm-RemoteMailboxesRead {
     param (
         # Operations
@@ -2096,7 +2353,6 @@ function Idm-RemoteMailboxesRead {
 
     Log verbose "Done"
 }
-
 
 function Idm-RemoteMailboxSet {
     param (
@@ -2175,7 +2431,6 @@ function Idm-RemoteMailboxSet {
 
     Log verbose "Done"
 }
-
 
 function Idm-RemoteMailboxDisable {
     param (
@@ -2617,7 +2872,6 @@ function Open-MsExchangeSession {
     }
 }
 
-
 function Close-MsExchangeSession {
     if ($Global:MsExchangePSSession) {
         Log verbose "Closing MsExchangePSSession"
@@ -2633,7 +2887,6 @@ function Close-MsExchangeSession {
         Log verbose "Done"
     }
 }
-
 
 function Get-ClassMetaData {
     param (
