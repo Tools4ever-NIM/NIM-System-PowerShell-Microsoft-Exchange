@@ -1,3 +1,4 @@
+# version: 2.5
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -1749,7 +1750,7 @@ function Idm-MailboxSet {
             # v Cloud
 
             LogIO info "Set-MsExchangeMailbox" -In @call_params
-                $rv = Set-MsExchangeMailbox @call_params
+                $rv = Set-MsExchangeMailbox @call_params -Confirm:$false -Force
             LogIO info "Set-MsExchangeMailbox" -Out $rv
 
             $rv
