@@ -1436,7 +1436,7 @@ function Idm-DynamicDistributionGroupMembersRead {
                 
                 LogIO info "Get-MsExchangeDynamicDistributionGroup" -In @call_params
                 Log verbose "Retrieving groups with Get-MsExchangeDynamicDistributionGroup"
-                $groups = Get-MsExchangeDynamicDistributionGroup @call_params | Select-Object "GUID","RecipientFilter" 
+                $groups = Get-MsExchangeDynamicDistributionGroup @call_params | Select-Object "GUID","RecipientFilter","RecipientContainer"
 
                 foreach($group in $groups) {
                     $sub_call_params = $call_params.Clone()
