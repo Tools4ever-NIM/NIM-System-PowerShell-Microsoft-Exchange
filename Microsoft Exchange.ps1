@@ -1441,6 +1441,7 @@ function Idm-DynamicDistributionGroupMembersRead {
                 foreach($group in $groups) {
                     $sub_call_params = $call_params.Clone()
                     $sub_call_params.RecipientPreviewFilter = $group.RecipientFilter
+                    $sub_call_params.OrganizationalUnit = $group.RecipientContainer
                     LogIO info "Get-MsExchangeRecipient" -In @sub_call_params
                     Log verbose "Group: $($group.GUID) - RecipientFilter: $($group.RecipientFilter)"
                     Get-MsExchangeRecipient @sub_call_params | Select-Object  @(@{Name='GroupGUID'; Expression={$group.GUID}}, 'GUID')
