@@ -1,4 +1,3 @@
-# version: 2.5
 #
 # Microsoft Exchange.ps1 - IDM System PowerShell Script for Microsoft Exchange Services.
 #
@@ -2839,7 +2838,7 @@ function Open-MsExchangeSession {
                 $new_ps_session_params.Credential = New-Object System.Management.Automation.PSCredential($connection_params.username, (ConvertTo-SecureString $connection_params.password -AsPlainText -Force))
             }
 
-            if ($connection_params.skip_certificate_checks.Count -gt 0 -or $connection_params.use_proxy_server) {
+            if (($connection_params.use_secure_connection -eq $true -and $connection_params.skip_certificate_checks.Count -gt 0) -or $connection_params.use_proxy_server) {
                 $new_ps_session_option_params = @{}
 
                 if ($connection_params.skip_certificate_checks.Count -gt 0) {
